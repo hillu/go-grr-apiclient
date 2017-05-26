@@ -11,6 +11,7 @@ import (
 	"net/url"
 	"os"
 	"strings"
+	"time"
 )
 
 func main() {
@@ -33,16 +34,26 @@ func main() {
 	}
 	w := csv.NewWriter(os.Stdout)
 	defer w.Flush()
-	w.Write([]string{"Client ID", "Host", "Labels"})
+	w.Write([]string{"Client ID", "Host", "Labels", "Hardware", "First Seen", "Last Booted", "Last Seen",
+		"System", "Version", "Manufacturer", "Architecture"})
 	for _, client := range result.GetItems() {
 		var labels []string
 		for _, label := range client.GetLabels() {
 			labels = append(labels, label.GetName())
 		}
+
+		// Write Line
 		w.Write([]string{
 			client.GetUrn(),
 			client.GetOsInfo().GetNode(),
 			strings.Join(labels, " "),
+			time.Unix(int64(*client.FirstSeenAt)/1000000, 0).String(),
+			time.Unix(int64(*client.LastBootedAt)/1000000, 0).String(),
+			time.Unix(int64(*client.LastSeenAt)/1000000, 0).String(),
+			client.GetOsInfo().GetSystem(),
+			client.GetOsInfo().GetVersion(),
+			client.GetHardwareInfo().GetSystemManufacturer(),
+			client.GetOsInfo().GetMachine(),
 		})
 	}
 }
