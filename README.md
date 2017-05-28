@@ -32,14 +32,11 @@ are shipped with GRR 3.1.0.2.
 
 This package does not yet cover all functions and API endpoints. There
 are templates for three basic patterns, see `generate.go`,
-`generate/gen-functions.sh` for details:
+`generate/gen-functions.go` for details:
 
-- simple GET: fixed path, no parameters, receive Protobuf Message
-- simple POST: fixed path, provide Protobuf Message, receive simple answer
-- GET/POST: fixed path, provide Protobuf Message, receive Protobuf Message
-
-For everything else (e.g. `GET /api/clients/<client>`), a small
-adapter function has to be written, see `GetClient()` for an example.
+- simple GET: receive Protobuf Message
+- simple POST: provide Protobuf Message, receive simple answer
+- GET/POST: provide Protobuf Message, receive Protobuf Message
 
 ## License
 
