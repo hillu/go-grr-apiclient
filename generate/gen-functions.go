@@ -37,7 +37,7 @@ func getParams(path string) (params []param) {
 
 var (
 	requesttemplate = template.Must(template.New("").Parse(`
-func (c APIClient) {{ .Name -}} (rq Api{{ .Name }}Args) (rs *Api{{ .Name }}Result, err error) {
+func (c *APIClient) {{ .Name -}} (rq Api{{ .Name }}Args) (rs *Api{{ .Name }}Result, err error) {
 	rs = new(Api {{- .Name -}} Result)
 	if err := c.do("{{ .Method }}", "{{ .Path }}", &rq, rs); err != nil {
 		return nil, err
@@ -47,7 +47,7 @@ func (c APIClient) {{ .Name -}} (rq Api{{ .Name }}Args) (rs *Api{{ .Name }}Resul
 `,
 	))
 	gettemplate = template.Must(template.New("").Parse(`
-func (c APIClient) {{ .ApiCall.Name -}} (
+func (c *APIClient) {{ .ApiCall.Name -}} (
 
 {{- range $index, $var := .Params -}}
 {{- if $index }}, {{ end -}}
@@ -72,7 +72,7 @@ func (c APIClient) {{ .ApiCall.Name -}} (
 `,
 	))
 	posttemplate = template.Must(template.New("").Parse(`
-func (c APIClient) {{ .ApiCall.Name -}} (rq Api{{ .ApiCall.Name }}Args
+func (c *APIClient) {{ .ApiCall.Name -}} (rq Api{{ .ApiCall.Name }}Args
 
 {{- range $index, $var := .Params -}}
 {{- with $var.Name }}, {{ . }} string {{- end -}}

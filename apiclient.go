@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"io"
 	"net/http"
+	"net/http/cookiejar"
 	"net/url"
 	"path"
 	"strconv"
@@ -24,17 +25,22 @@ func (e APIError) Error() string {
 type APIClient struct {
 	BaseURL    *url.URL
 	User, Pass string
-	Client     *http.Client
+	// Client to use for web requests. If nil, it will be filled
+	// on-demand with a copy http.DefaultClient to which a
+	// "net/http/cookiejar".Jar has been added.
+	Client *http.Client
 }
 
-func (c APIClient) client() *http.Client {
+func (c *APIClient) client() *http.Client {
 	if c.Client == nil {
-		return http.DefaultClient
+		c.Client = new(http.Client)
+		*c.Client = *http.DefaultClient
+		c.Client.Jar, _ = cookiejar.New(nil)
 	}
 	return c.Client
 }
 
-func (c APIClient) do(method, apipath string, rqm, rsm proto.Message) error {
+func (c *APIClient) do(method, apipath string, rqm, rsm proto.Message) error {
 	u := *c.BaseURL
 	u.Path = path.Join(u.Path, apipath)
 	u.RawQuery = "strip_type_info=1"
@@ -66,7 +72,7 @@ func (c APIClient) do(method, apipath string, rqm, rsm proto.Message) error {
 	return nil
 }
 
-func (c APIClient) get(apipath string, values url.Values, rsm proto.Message) error {
+func (c *APIClient) get(apipath string, values url.Values, rsm proto.Message) error {
 	u := *c.BaseURL
 	u.Path = path.Join(u.Path, apipath)
 	if values == nil {
@@ -98,7 +104,7 @@ func (c APIClient) get(apipath string, values url.Values, rsm proto.Message) err
 	return nil
 }
 
-func (c APIClient) post(apipath string, rqm proto.Message) error {
+func (c *APIClient) post(apipath string, rqm proto.Message) error {
 	u := *c.BaseURL
 	u.Path = path.Join(u.Path, apipath)
 	buf := &bytes.Buffer{}
