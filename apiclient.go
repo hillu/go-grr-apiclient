@@ -24,8 +24,10 @@ func (e APIError) Error() string {
 }
 
 type APIClient struct {
-	BaseURL    *url.URL
-	User, Pass string
+	// Base URL of the GRR AdminUI server, including the username and
+	// password for HTTP Basic Authentication, e.g.
+	// url.Parse("http://admin:admin@localhost:8000")
+	BaseURL *url.URL
 	// Client to use for web requests. If nil, it will be filled
 	// on-demand with a copy http.DefaultClient to which a
 	// "net/http/cookiejar".Jar has been added.
@@ -45,7 +47,6 @@ func (c *APIClient) client() *http.Client {
 func (c *APIClient) getCSRFToken() string {
 	if c.csrftoken == "" {
 		rq, _ := http.NewRequest("GET", c.BaseURL.String(), nil)
-		rq.SetBasicAuth(c.User, c.Pass)
 		c.client().Do(rq)
 		for _, cookie := range c.client().Jar.Cookies(c.BaseURL) {
 			if cookie.Name == "csrftoken" {
@@ -58,7 +59,6 @@ func (c *APIClient) getCSRFToken() string {
 }
 
 func (c *APIClient) dohttprequest(rq *http.Request) (*http.Response, error) {
-	rq.SetBasicAuth(c.User, c.Pass)
 	rq.Header.Set("x-csrftoken", c.getCSRFToken())
 	rs, err := c.client().Do(rq)
 	if err != nil {
