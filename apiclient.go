@@ -1,10 +1,10 @@
 package apiclient
 
 import (
-	"github.com/golang/protobuf/jsonpb"
 	"github.com/golang/protobuf/proto"
 
 	"bytes"
+	"encoding/json"
 	"io"
 	"net/http"
 	"net/url"
@@ -39,7 +39,7 @@ func (c APIClient) do(method, apipath string, rqm, rsm proto.Message) error {
 	u.Path = path.Join(u.Path, apipath)
 	u.RawQuery = "strip_type_info=1"
 	buf := &bytes.Buffer{}
-	if err := (&jsonpb.Marshaler{}).Marshal(buf, rqm); err != nil {
+	if err := json.NewEncoder(buf).Encode(rqm); err != nil {
 		return err
 	}
 	rq, err := http.NewRequest(method, u.String(), buf)
@@ -60,7 +60,7 @@ func (c APIClient) do(method, apipath string, rqm, rsm proto.Message) error {
 		}
 	}
 	skipXSS(rs.Body)
-	if err := jsonpb.Unmarshal(rs.Body, rsm); err != nil {
+	if err := json.NewDecoder(rs.Body).Decode(rsm); err != nil {
 		return err
 	}
 	return nil
@@ -92,7 +92,7 @@ func (c APIClient) get(apipath string, values url.Values, rsm proto.Message) err
 		}
 	}
 	skipXSS(rs.Body)
-	if err := jsonpb.Unmarshal(rs.Body, rsm); err != nil {
+	if err := json.NewDecoder(rs.Body).Decode(rsm); err != nil {
 		return err
 	}
 	return nil
@@ -102,7 +102,7 @@ func (c APIClient) post(apipath string, rqm proto.Message) error {
 	u := *c.BaseURL
 	u.Path = path.Join(u.Path, apipath)
 	buf := &bytes.Buffer{}
-	if err := (&jsonpb.Marshaler{}).Marshal(buf, rqm); err != nil {
+	if err := json.NewEncoder(buf).Encode(rqm); err != nil {
 		return err
 	}
 	rq, err := http.NewRequest("POST", u.String(), buf)
