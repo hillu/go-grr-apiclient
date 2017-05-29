@@ -30,7 +30,8 @@ type APIClient struct {
 	BaseURL *url.URL
 	// Client to use for web requests. If nil, it will be filled
 	// on-demand with a copy http.DefaultClient to which a
-	// "net/http/cookiejar".Jar has been added.
+	// "net/http/cookiejar".Jar has been added. The cookie jar is
+	// needed for handling the csrf token mechanism.
 	Client    *http.Client
 	csrftoken string
 }
