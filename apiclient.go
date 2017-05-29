@@ -11,6 +11,7 @@ import (
 	"net/url"
 	"path"
 	"strconv"
+	"strings"
 )
 
 type APIError struct {
@@ -28,7 +29,8 @@ type APIClient struct {
 	// Client to use for web requests. If nil, it will be filled
 	// on-demand with a copy http.DefaultClient to which a
 	// "net/http/cookiejar".Jar has been added.
-	Client *http.Client
+	Client    *http.Client
+	csrftoken string
 }
 
 func (c *APIClient) client() *http.Client {
@@ -40,6 +42,46 @@ func (c *APIClient) client() *http.Client {
 	return c.Client
 }
 
+func (c *APIClient) getCSRFToken() string {
+	if c.csrftoken == "" {
+		rq, _ := http.NewRequest("GET", c.BaseURL.String(), nil)
+		rq.SetBasicAuth(c.User, c.Pass)
+		c.client().Do(rq)
+		for _, cookie := range c.client().Jar.Cookies(c.BaseURL) {
+			if cookie.Name == "csrftoken" {
+				c.csrftoken = cookie.Value
+				break
+			}
+		}
+	}
+	return c.csrftoken
+}
+
+func (c *APIClient) dohttprequest(rq *http.Request) (*http.Response, error) {
+	rq.SetBasicAuth(c.User, c.Pass)
+	rq.Header.Set("x-csrftoken", c.getCSRFToken())
+	rs, err := c.client().Do(rq)
+	if err != nil {
+		return nil, err
+	}
+	if strings.HasPrefix(rs.Header.Get("Content-Type"), "application/json") {
+		// skip XSS header
+		var buf [5]byte
+		rs.Body.Read(buf[:])
+	}
+	if rs.StatusCode >= 400 {
+		buf := &bytes.Buffer{}
+		io.Copy(buf, rs.Body)
+		return nil, APIError{
+			StatusCode: rs.StatusCode,
+			Body:       buf.String(),
+		}
+	}
+	return rs, nil
+}
+
+// GET and POST calls where both the request and the response contain
+// a JSON body
 func (c *APIClient) do(method, apipath string, rqm, rsm proto.Message) error {
 	u := *c.BaseURL
 	u.Path = path.Join(u.Path, apipath)
@@ -52,26 +94,17 @@ func (c *APIClient) do(method, apipath string, rqm, rsm proto.Message) error {
 	if err != nil {
 		return err
 	}
-	rq.SetBasicAuth(c.User, c.Pass)
-	rs, err := c.client().Do(rq)
+	rs, err := c.dohttprequest(rq)
 	if err != nil {
 		return err
 	}
-	if rs.StatusCode >= 400 {
-		buf := &bytes.Buffer{}
-		io.Copy(buf, rs.Body)
-		return APIError{
-			StatusCode: rs.StatusCode,
-			Body:       buf.String(),
-		}
-	}
-	skipXSS(rs.Body)
 	if err := json.NewDecoder(rs.Body).Decode(rsm); err != nil {
 		return err
 	}
 	return nil
 }
 
+// Simple GET calls where the response contains a JSON body
 func (c *APIClient) get(apipath string, values url.Values, rsm proto.Message) error {
 	u := *c.BaseURL
 	u.Path = path.Join(u.Path, apipath)
@@ -84,26 +117,17 @@ func (c *APIClient) get(apipath string, values url.Values, rsm proto.Message) er
 	if err != nil {
 		return err
 	}
-	rq.SetBasicAuth(c.User, c.Pass)
-	rs, err := c.client().Do(rq)
+	rs, err := c.dohttprequest(rq)
 	if err != nil {
 		return err
 	}
-	if rs.StatusCode >= 400 {
-		buf := &bytes.Buffer{}
-		io.Copy(buf, rs.Body)
-		return APIError{
-			StatusCode: rs.StatusCode,
-			Body:       buf.String(),
-		}
-	}
-	skipXSS(rs.Body)
 	if err := json.NewDecoder(rs.Body).Decode(rsm); err != nil {
 		return err
 	}
 	return nil
 }
 
+// Simple POST calls where only the request contains a meaningful JSON body
 func (c *APIClient) post(apipath string, rqm proto.Message) error {
 	u := *c.BaseURL
 	u.Path = path.Join(u.Path, apipath)
@@ -115,23 +139,8 @@ func (c *APIClient) post(apipath string, rqm proto.Message) error {
 	if err != nil {
 		return err
 	}
-	rq.SetBasicAuth(c.User, c.Pass)
-	rs, err := c.client().Do(rq)
-	if err != nil {
+	if _, err = c.dohttprequest(rq); err != nil {
 		return err
 	}
-	if rs.StatusCode >= 400 {
-		buf := &bytes.Buffer{}
-		io.Copy(buf, rs.Body)
-		return APIError{
-			StatusCode: rs.StatusCode,
-			Body:       buf.String(),
-		}
-	}
 	return nil
-}
-
-func skipXSS(r io.Reader) {
-	var buf [5]byte
-	r.Read(buf[:])
 }
