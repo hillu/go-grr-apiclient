@@ -14,17 +14,15 @@ import (
 )
 
 func main() {
-	var urlstr, user, pass string
-	flag.StringVar(&urlstr, "url", "http://localhost:8000", "Base URL for GRR AdminUI server")
-	flag.StringVar(&user, "user", "", "Username")
-	flag.StringVar(&pass, "pass", "", "Passwort")
+	var urlstr string
+	flag.StringVar(&urlstr, "url", "http://admin:admin@localhost:8000", "Base URL for GRR AdminUI server")
 	flag.Parse()
 	baseurl, err := url.Parse(urlstr)
 	if err != nil {
 		log.Fatal(err)
 	}
-	c := apiclient.APIClient{
-		BaseURL: baseurl, User: user, Pass: pass,
+	c := &apiclient.APIClient{
+		BaseURL: baseurl,
 		Client: &http.Client{Transport: &http.Transport{
 			TLSClientConfig: &tls.Config{InsecureSkipVerify: true}},
 		},
