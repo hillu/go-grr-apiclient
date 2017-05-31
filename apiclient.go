@@ -16,7 +16,6 @@ import (
 
 type APIError struct {
 	StatusCode int
-	Body       string
 }
 
 func (e APIError) Error() string {
@@ -59,7 +58,10 @@ func (c *APIClient) getCSRFToken() string {
 	return c.csrftoken
 }
 
-func (c *APIClient) dohttprequest(rq *http.Request) (*http.Response, error) {
+// DoRequest performs the provided http.Request on the GRR server. It
+// adds a CSRF token and skips over the ")]}'\n" XSS protection header
+// if the GRR server returns a JSON document.
+func (c *APIClient) DoRequest(rq *http.Request) (*http.Response, error) {
 	rq.Header.Set("x-csrftoken", c.getCSRFToken())
 	rs, err := c.client().Do(rq)
 	if err != nil {
@@ -73,9 +75,8 @@ func (c *APIClient) dohttprequest(rq *http.Request) (*http.Response, error) {
 	if rs.StatusCode >= 400 {
 		buf := &bytes.Buffer{}
 		io.Copy(buf, rs.Body)
-		return nil, APIError{
+		return rs, APIError{
 			StatusCode: rs.StatusCode,
-			Body:       buf.String(),
 		}
 	}
 	return rs, nil
@@ -95,7 +96,7 @@ func (c *APIClient) do(method, apipath string, rqm, rsm proto.Message) error {
 	if err != nil {
 		return err
 	}
-	rs, err := c.dohttprequest(rq)
+	rs, err := c.DoRequest(rq)
 	if err != nil {
 		return err
 	}
@@ -118,7 +119,7 @@ func (c *APIClient) get(apipath string, values url.Values, rsm proto.Message) er
 	if err != nil {
 		return err
 	}
-	rs, err := c.dohttprequest(rq)
+	rs, err := c.DoRequest(rq)
 	if err != nil {
 		return err
 	}
@@ -140,7 +141,7 @@ func (c *APIClient) post(apipath string, rqm proto.Message) error {
 	if err != nil {
 		return err
 	}
-	if _, err = c.dohttprequest(rq); err != nil {
+	if _, err = c.DoRequest(rq); err != nil {
 		return err
 	}
 	return nil
