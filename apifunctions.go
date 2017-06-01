@@ -2,6 +2,10 @@
 
 package apiclient
 
+import (
+	"path"
+)
+
 func (c *APIClient) ListArtifacts(rq ApiListArtifactsArgs) (rs *ApiListArtifactsResult, err error) {
 	rs = new(ApiListArtifactsResult)
 	if err := c.do("GET", "/api/artifacts", &rq, rs); err != nil {
@@ -24,21 +28,21 @@ func (c *APIClient) SearchClients(rq ApiSearchClientsArgs) (rs *ApiSearchClients
 }
 func (c *APIClient) GetClient(rq ApiGetClientArgs) (rs *ApiGetClientResult, err error) {
 	rs = new(ApiGetClientResult)
-	if err := c.do("GET", "/api/clients/<client_id>", &rq, rs); err != nil {
+	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId()), &rq, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) GetClientVersionTimes(clientId string) (rs *ApiGetClientVersionTimesResult, err error) {
 	rs = new(ApiGetClientVersionTimesResult)
-	if err := c.get("/api/clients/"+clientId+"/version", nil, rs); err != nil {
+	if err := c.get("/api/clients/"+clientId+"/version-times", nil, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) GetLastClientIPAddress(clientId string) (rs *ApiGetLastClientIPAddressResult, err error) {
 	rs = new(ApiGetLastClientIPAddressResult)
-	if err := c.get("/api/clients/"+clientId+"/last", nil, rs); err != nil {
+	if err := c.get("/api/clients/"+clientId+"/last-ip", nil, rs); err != nil {
 		return nil, err
 	}
 	return
@@ -58,7 +62,7 @@ func (c *APIClient) RemoveClientsLabels(rq ApiRemoveClientsLabelsArgs) error {
 }
 func (c *APIClient) ListFlows(rq ApiListFlowsArgs) (rs *ApiListFlowsResult, err error) {
 	rs = new(ApiListFlowsResult)
-	if err := c.do("GET", "/api/clients/<client_id>/flows", &rq, rs); err != nil {
+	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/flows", &rq, rs); err != nil {
 		return nil, err
 	}
 	return

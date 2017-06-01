@@ -20,7 +20,7 @@ func snake2camel(name string) (result string) {
 	return
 }
 
-var paramRegexp = regexp.MustCompile(`(/[a-z/]+/?)((?:<.*?>)?)`)
+var paramRegexp = regexp.MustCompile(`(/[a-z-/]+/?)((?:<.*?>)?)`)
 
 type param struct{ Prefix, Name string }
 
@@ -36,18 +36,26 @@ func getParams(path string) (params []param) {
 }
 
 var (
-	requesttemplate = template.Must(template.New("").Parse(`
+	requesttemplate = template.Must(template.New("").
+			Funcs(template.FuncMap{"title": strings.Title}).
+			Parse(`
 {{- $arg := or .Arg ( print "Api" .Name "Args" ) -}}
 {{- $result := or .Result ( print "Api" .Name "Result" ) -}}
 func (c *APIClient) {{ .Name -}} (rq {{ $arg -}} ) (rs *{{ $result }}, err error) {
 	rs = new( {{- $result -}} )
-	if err := c.do("{{ .Method }}", "{{ .Path }}", &rq, rs); err != nil {
+	if err := c.do("{{ .Method }}", {{ range $index, $var := .Params -}}
+{{- if $index -}}+{{- end -}}
+"{{- $var.Prefix -}}"
+{{- with $var.Name }}+path.Base(rq.Get{{ title . }}()){{ end -}}
+{{- end -}}
+
+, &rq, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 `,
-	))
+		))
 	gettemplate = template.Must(template.New("").Parse(`
 {{- $result := or .Result ( print "Api" .Name "Result" ) -}}
 func (c *APIClient) {{ .ApiCall.Name -}} (
@@ -238,13 +246,20 @@ func main() {
 
 package apiclient
 
+import (
+	"path"
+)
+
 `)
 	defer f.Close()
 	for _, call := range apicalls {
 		var err error
 		switch call.Method {
 		case "GET", "POST":
-			err = requesttemplate.Execute(f, call)
+			err = requesttemplate.Execute(f, struct {
+				ApiCall
+				Params []param
+			}{call, getParams(call.Path)})
 		case "GET-simple":
 			err = gettemplate.Execute(f, struct {
 				ApiCall
