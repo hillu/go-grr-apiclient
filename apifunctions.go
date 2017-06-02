@@ -40,9 +40,72 @@ func (c *APIClient) GetClientVersionTimes(clientId string) (rs *ApiGetClientVers
 	}
 	return
 }
+func (c *APIClient) InterrogateClient(rq ApiInterrogateClientArgs) (rs *ApiInterrogateClientResult, err error) {
+	rs = new(ApiInterrogateClientResult)
+	if err := c.do("POST", "/api/clients/"+path.Base(rq.GetClientId())+"/actions/interrogate", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
 func (c *APIClient) GetLastClientIPAddress(clientId string) (rs *ApiGetLastClientIPAddressResult, err error) {
 	rs = new(ApiGetLastClientIPAddressResult)
 	if err := c.get("/api/clients/"+clientId+"/last-ip", nil, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListFiles(rq ApiListFilesArgs) (rs *ApiListFilesResult, err error) {
+	rs = new(ApiListFilesResult)
+	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/vfs-index/", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) GetFileDetails(rq ApiGetFileDetailsArgs) (rs *ApiGetFileDetailsResult, err error) {
+	rs = new(ApiGetFileDetailsResult)
+	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/vfs-details/"+path.Base(rq.GetFilePath()), &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) GetFileText(rq ApiGetFileTextArgs) (rs *ApiGetFileTextResult, err error) {
+	rs = new(ApiGetFileTextResult)
+	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/vfs-text/"+path.Base(rq.GetFilePath()), &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) GetFileVersionTimes(rq ApiGetFileVersionTimesArgs) (rs *ApiGetFileVersionTimesResult, err error) {
+	rs = new(ApiGetFileVersionTimesResult)
+	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/vfs-version-times/"+path.Base(rq.GetFilePath()), &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) GetFileDownloadCommand(rq ApiGetFileDownloadCommandArgs) (rs *ApiGetFileDownloadCommandResult, err error) {
+	rs = new(ApiGetFileDownloadCommandResult)
+	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/vfs-download-command/"+path.Base(rq.GetFilePath()), &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) CreateVfsRefreshOperation(rq ApiCreateVfsRefreshOperationArgs) (rs *ApiCreateVfsRefreshOperationResult, err error) {
+	rs = new(ApiCreateVfsRefreshOperationResult)
+	if err := c.do("POST", "/api/clients/"+path.Base(rq.GetClientId())+"/vfs-refresh-operations", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) GetVfsTimeline(rq ApiGetVfsTimelineArgs) (rs *ApiGetVfsTimelineResult, err error) {
+	rs = new(ApiGetVfsTimelineResult)
+	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/vfs-timeline/"+path.Base(rq.GetFilePath()), &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) UpdateVfsFileContent(rq ApiUpdateVfsFileContentArgs) (rs *ApiUpdateVfsFileContentResult, err error) {
+	rs = new(ApiUpdateVfsFileContentResult)
+	if err := c.do("POST", "/api/clients/"+path.Base(rq.GetClientId())+"/vfs-update", &rq, rs); err != nil {
 		return nil, err
 	}
 	return
@@ -67,8 +130,64 @@ func (c *APIClient) ListFlows(rq ApiListFlowsArgs) (rs *ApiListFlowsResult, err 
 	}
 	return
 }
+func (c *APIClient) GetFlow(rq ApiGetFlowArgs) (rs *ApiFlow, err error) {
+	rs = new(ApiFlow)
+	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId()), &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) CreateFlow(rq ApiCreateFlowArgs) (rs *ApiFlow, err error) {
+	rs = new(ApiFlow)
+	if err := c.do("POST", "/api/clients/"+path.Base(rq.GetClientId())+"/flows", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
 func (c *APIClient) CancelFlow(rq ApiCancelFlowArgs, clientId string, flowId string) error {
 	return c.post("/api/clients/"+clientId+"/flows/"+flowId+"/actions/cancel", &rq)
+}
+func (c *APIClient) ListFlowResults(rq ApiListFlowResultsArgs) (rs *ApiListFlowResultsResult, err error) {
+	rs = new(ApiListFlowResultsResult)
+	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId())+"/results", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) GetFlowResultsExportCommand(rq ApiGetFlowResultsExportCommandArgs) (rs *ApiGetFlowResultsExportCommandResult, err error) {
+	rs = new(ApiGetFlowResultsExportCommandResult)
+	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId())+"/results/export-command", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListFlowOutputPlugins(rq ApiListFlowOutputPluginsArgs) (rs *ApiListFlowOutputPluginsResult, err error) {
+	rs = new(ApiListFlowOutputPluginsResult)
+	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId())+"/output-plugins", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListFlowOutputPluginLogs(rq ApiListFlowOutputPluginLogsArgs) (rs *ApiListFlowOutputPluginLogsResult, err error) {
+	rs = new(ApiListFlowOutputPluginLogsResult)
+	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId())+"/output-plugins/"+path.Base(rq.GetPluginId())+"/errors", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListFlowOutputPluginErrors(rq ApiListFlowOutputPluginErrorsArgs) (rs *ApiListFlowOutputPluginErrorsResult, err error) {
+	rs = new(ApiListFlowOutputPluginErrorsResult)
+	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId())+"/output-plugins/"+path.Base(rq.GetPluginId())+"/errors", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListFlowLogs(rq ApiListFlowLogsArgs) (rs *ApiListFlowLogsResult, err error) {
+	rs = new(ApiListFlowLogsResult)
+	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId())+"/log", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
 }
 func (c *APIClient) CreateGlobalFlow(rq ApiCreateFlowArgs) (rs *ApiFlow, err error) {
 	rs = new(ApiFlow)
@@ -84,9 +203,228 @@ func (c *APIClient) ListCronJobs(rq ApiListCronJobsArgs) (rs *ApiListCronJobsRes
 	}
 	return
 }
+func (c *APIClient) CreateCronJob(rq ApiCronJob) error {
+	return c.post("/api/cron-jobs", &rq)
+}
+func (c *APIClient) DeleteCronJob(rq ApiDeleteCronJobArgs, cronJobId string) error {
+	return c.post("/api/cron-jobs/"+cronJobId+"/actions/delete", &rq)
+}
 func (c *APIClient) ListHunts(rq ApiListHuntsArgs) (rs *ApiListHuntsResult, err error) {
 	rs = new(ApiListHuntsResult)
 	if err := c.do("GET", "/api/hunts", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) GetHunt(huntId string) (rs *ApiHunt, err error) {
+	rs = new(ApiHunt)
+	if err := c.get("/api/hunts/"+huntId, nil, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListHuntErrors(rq ApiListHuntErrorsArgs) (rs *ApiListHuntErrorsResult, err error) {
+	rs = new(ApiListHuntErrorsResult)
+	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/errors", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListHuntLogs(rq ApiListHuntLogsArgs) (rs *ApiListHuntLogsResult, err error) {
+	rs = new(ApiListHuntLogsResult)
+	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/log", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListHuntResults(rq ApiListHuntResultsArgs) (rs *ApiListHuntResultsResult, err error) {
+	rs = new(ApiListHuntResultsResult)
+	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/results", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) GetHuntResultsExportCommand(rq ApiGetHuntResultsExportCommandArgs) (rs *ApiGetHuntResultsExportCommandResult, err error) {
+	rs = new(ApiGetHuntResultsExportCommandResult)
+	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/results/export-command", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListHuntOutputPlugins(rq ApiListHuntOutputPluginsArgs) (rs *ApiListHuntOutputPluginsResult, err error) {
+	rs = new(ApiListHuntOutputPluginsResult)
+	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/output-plugins", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListHuntOutputPluginLogs(rq ApiListHuntOutputPluginLogsArgs) (rs *ApiListHuntOutputPluginLogsResult, err error) {
+	rs = new(ApiListHuntOutputPluginLogsResult)
+	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/output-plugins/"+path.Base(rq.GetPluginId())+"/logs", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListHuntOutputPluginErrors(rq ApiListHuntOutputPluginErrorsArgs) (rs *ApiListHuntOutputPluginErrorsResult, err error) {
+	rs = new(ApiListHuntOutputPluginErrorsResult)
+	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/output-plugins/"+path.Base(rq.GetPluginId())+"/errors", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListHuntCrashes(rq ApiListHuntCrashesArgs) (rs *ApiListHuntCrashesResult, err error) {
+	rs = new(ApiListHuntCrashesResult)
+	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/crashes", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) GetHuntClientCompletionStats(rq ApiGetHuntClientCompletionStatsArgs) (rs *ApiGetHuntClientCompletionStatsResult, err error) {
+	rs = new(ApiGetHuntClientCompletionStatsResult)
+	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/client-completion-stats", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) GetHuntStats(rq ApiGetHuntStatsArgs) (rs *ApiGetHuntStatsResult, err error) {
+	rs = new(ApiGetHuntStatsResult)
+	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/stats", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) GetHuntContext(rq ApiGetHuntContextArgs) (rs *ApiGetHuntContextResult, err error) {
+	rs = new(ApiGetHuntContextResult)
+	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/context", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) CreateHunt(rq ApiCreateHuntArgs) (rs *ApiHunt, err error) {
+	rs = new(ApiHunt)
+	if err := c.do("POST", "/api/hunts", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) CreateUserClientApproval(rq ApiCreateUserClientApprovalArgs) (rs *ApiUserClientApproval, err error) {
+	rs = new(ApiUserClientApproval)
+	if err := c.do("POST", "/api/users/me/approvals/client/"+path.Base(rq.GetClientId()), &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) GetUserClientApproval(rq ApiGetUserClientApprovalArgs) (rs *ApiUserClientApproval, err error) {
+	rs = new(ApiUserClientApproval)
+	if err := c.do("GET", "/api/users/me/approvals/client/"+path.Base(rq.GetClientId()), &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListUserClientApprovals(rq ApiListUserClientApprovalsArgs) (rs *ApiListUserClientApprovalsResult, err error) {
+	rs = new(ApiListUserClientApprovalsResult)
+	if err := c.do("GET", "/api/users/me/approvals/client", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListUserHuntApprovals(rq ApiListUserHuntApprovalsArgs) (rs *ApiListUserHuntApprovalsResult, err error) {
+	rs = new(ApiListUserHuntApprovalsResult)
+	if err := c.do("GET", "/api/users/me/approvals/hunt", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListUserCronApprovals(rq ApiListUserCronApprovalsArgs) (rs *ApiListUserCronApprovalsResult, err error) {
+	rs = new(ApiListUserCronApprovalsResult)
+	if err := c.do("GET", "/api/users/me/approvals/cron", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) GetPendingUserNotificationsCount() (rs *ApiGetPendingUserNotificationsCountResult, err error) {
+	rs = new(ApiGetPendingUserNotificationsCountResult)
+	if err := c.get("/api/users/me/notifications/pending/count", nil, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListPendingUserNotifications(rq ApiListPendingUserNotificationsArgs) (rs *ApiListPendingUserNotificationsResult, err error) {
+	rs = new(ApiListPendingUserNotificationsResult)
+	if err := c.do("GET", "/api/users/me/notifications/pending", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListAndResetUserNotifications(rq ApiListAndResetUserNotificationsArgs) (rs *ApiListAndResetUserNotificationsResult, err error) {
+	rs = new(ApiListAndResetUserNotificationsResult)
+	if err := c.do("POST", "/api/users/me/notifications", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) GetGrrUser() (rs *ApiGrrUser, err error) {
+	rs = new(ApiGrrUser)
+	if err := c.get("/api/users/me", nil, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) UpdateGrrUser(rq ApiGrrUser) error {
+	return c.post("/api/users/me", &rq)
+}
+func (c *APIClient) ListPendingGlobalNotifications() (rs *ApiListPendingGlobalNotificationsResult, err error) {
+	rs = new(ApiListPendingGlobalNotificationsResult)
+	if err := c.get("/api/users/me/notifications/pending/global", nil, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) GetConfig() (rs *ApiGetConfigResult, err error) {
+	rs = new(ApiGetConfigResult)
+	if err := c.get("/api/config", nil, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) GetConfigOption(rq ApiGetConfigOptionArgs) (rs *ApiConfigOption, err error) {
+	rs = new(ApiConfigOption)
+	if err := c.do("GET", "/api/config/"+path.Base(rq.GetName()), &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListKbFields() (rs *ApiListKbFieldsResult, err error) {
+	rs = new(ApiListKbFieldsResult)
+	if err := c.get("/api/clients/kb-fields", nil, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListFlowDescriptors(rq ApiListFlowDescriptorsArgs) (rs *ApiListFlowDescriptorsResult, err error) {
+	rs = new(ApiListFlowDescriptorsResult)
+	if err := c.do("GET", "/api/flows/descriptors", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListKnownEncodings() (rs *ApiListKnownEncodingsResult, err error) {
+	rs = new(ApiListKnownEncodingsResult)
+	if err := c.get("/api/reflection/file-encodings", nil, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) StartRobotGetFilesOperation(rq ApiStartRobotGetFilesOperationArgs) (rs *ApiStartRobotGetFilesOperationResult, err error) {
+	rs = new(ApiStartRobotGetFilesOperationResult)
+	if err := c.do("POST", "/api/robot-actions/get-files", &rq, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) GetRobotGetFilesOperationState(rq ApiGetRobotGetFilesOperationStateArgs) (rs *ApiGetRobotGetFilesOperationStateResult, err error) {
+	rs = new(ApiGetRobotGetFilesOperationStateResult)
+	if err := c.do("GET", "/api/robot-actions/get-files/"+path.Base(rq.GetOperationId()), &rq, rs); err != nil {
 		return nil, err
 	}
 	return
