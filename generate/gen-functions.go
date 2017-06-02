@@ -28,7 +28,11 @@ func getParams(path string) (params []param) {
 	for _, f := range paramRegexp.FindAllStringSubmatch(path, -1) {
 		p := param{Prefix: f[1]}
 		if len(f[2]) != 0 {
-			p.Name = snake2camel(f[2][1 : len(f[2])-1])
+			// get rid of prefix:
+			name := f[2][1 : len(f[2])-1]
+			n := strings.Split(name, ":")
+			name = n[len(n)-1]
+			p.Name = snake2camel(name)
 		}
 		params = append(params, p)
 	}
