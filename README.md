@@ -28,7 +28,8 @@ I hope that this will be useful.
 ## Hacking / Work in progress
 
 Data structures have been generated from the Protobuf definitions that
-are shipped with GRR 3.1.0.2.
+are shipped with GRR 3.1.0.2. Some functinos that are not implemented
+in terms of the API have been reimplemented in `legacy.go`.
 
 This package does not yet cover all functions and API endpoints. There
 are templates for three basic patterns, see `generate.go`,
@@ -37,6 +38,16 @@ are templates for three basic patterns, see `generate.go`,
 - simple GET: receive Protobuf Message
 - simple POST: provide Protobuf Message, receive simple answer
 - GET/POST: provide Protobuf Message, receive Protobuf Message
+
+Remaining issues
+
+- A GET -> binary stream function template (for the routes annotated
+  with `@BinaryStream`)
+- Some functions are not annotated with a result type at all
+- How can `AnyType` be mapped to something useful, do we need the type
+  information that is omitted by passing `strip_type_info=1`?
+- Adding most of the functions / API routes that have been added since
+  GRR 3.1.0.2 should be possible.
 
 ## License
 
