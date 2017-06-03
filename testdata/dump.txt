@@ -1,0 +1,3885 @@
+========================================================================
+http://10.28.47.155:8000/api/clients
+{
+  "items": [
+    {
+      "age": 1495545519134340,
+      "type": "ApiClient",
+      "value": {
+        "users": [
+          {
+            "age": 0,
+            "type": "User",
+            "value": {
+              "username": {
+                "age": 0,
+                "type": "unicode",
+                "value": "root"
+              },
+              "full_name": {
+                "age": 0,
+                "type": "unicode",
+                "value": "root"
+              },
+              "last_logon": {
+                "age": 0,
+                "type": "RDFDatetime",
+                "value": 1493891999000000
+              },
+              "homedir": {
+                "age": 0,
+                "type": "unicode",
+                "value": "/root"
+              }
+            }
+          },
+          {
+            "age": 0,
+            "type": "User",
+            "value": {
+              "username": {
+                "age": 0,
+                "type": "unicode",
+                "value": "user"
+              },
+              "full_name": {
+                "age": 0,
+                "type": "unicode",
+                "value": "user"
+              },
+              "last_logon": {
+                "age": 0,
+                "type": "RDFDatetime",
+                "value": 1495545259000000
+              },
+              "homedir": {
+                "age": 0,
+                "type": "unicode",
+                "value": "/home/user"
+              }
+            }
+          }
+        ],
+        "urn": {
+          "age": 0,
+          "type": "ClientURN",
+          "value": "aff4:/C.88ad292d66293c97"
+        },
+        "labels": [
+          {
+            "age": 0,
+            "type": "AFF4ObjectLabel",
+            "value": {
+              "owner": {
+                "age": 0,
+                "type": "unicode",
+                "value": "admin"
+              },
+              "timestamp": {
+                "age": 0,
+                "type": "RDFDatetime",
+                "value": 1496064040753160
+              },
+              "name": {
+                "age": 0,
+                "type": "unicode",
+                "value": "foo"
+              }
+            }
+          },
+          {
+            "age": 0,
+            "type": "AFF4ObjectLabel",
+            "value": {
+              "owner": {
+                "age": 0,
+                "type": "unicode",
+                "value": "admin"
+              },
+              "timestamp": {
+                "age": 0,
+                "type": "RDFDatetime",
+                "value": 1496068092587261
+              },
+              "name": {
+                "age": 0,
+                "type": "unicode",
+                "value": "barbazqux"
+              }
+            }
+          },
+          {
+            "age": 0,
+            "type": "AFF4ObjectLabel",
+            "value": {
+              "owner": {
+                "age": 0,
+                "type": "unicode",
+                "value": "admin"
+              },
+              "timestamp": {
+                "age": 0,
+                "type": "RDFDatetime",
+                "value": 1496132378786414
+              },
+              "name": {
+                "age": 0,
+                "type": "unicode",
+                "value": "ddd"
+              }
+            }
+          },
+          {
+            "age": 0,
+            "type": "AFF4ObjectLabel",
+            "value": {
+              "owner": {
+                "age": 0,
+                "type": "unicode",
+                "value": "admin"
+              },
+              "timestamp": {
+                "age": 0,
+                "type": "RDFDatetime",
+                "value": 1496132378786618
+              },
+              "name": {
+                "age": 0,
+                "type": "unicode",
+                "value": "eee"
+              }
+            }
+          },
+          {
+            "age": 0,
+            "type": "AFF4ObjectLabel",
+            "value": {
+              "owner": {
+                "age": 0,
+                "type": "unicode",
+                "value": "admin"
+              },
+              "timestamp": {
+                "age": 0,
+                "type": "RDFDatetime",
+                "value": 1496132378786666
+              },
+              "name": {
+                "age": 0,
+                "type": "unicode",
+                "value": "fff"
+              }
+            }
+          }
+        ],
+        "agent_info": {
+          "age": 1495545511863278,
+          "type": "ClientInformation",
+          "value": {
+            "client_name": {
+              "age": 0,
+              "type": "unicode",
+              "value": "grr"
+            },
+            "client_description": {
+              "age": 0,
+              "type": "unicode",
+              "value": "grr linux amd64"
+            },
+            "client_version": {
+              "age": 0,
+              "type": "long",
+              "value": 3102
+            },
+            "build_time": {
+              "age": 0,
+              "type": "unicode",
+              "value": "2017-04-10 17:07:32"
+            }
+          }
+        },
+        "last_clock": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496037737177941
+        },
+        "first_seen_at": {
+          "age": 1495545505890708,
+          "type": "RDFDatetime",
+          "value": 1495545505890700
+        },
+        "volumes": [
+          {
+            "age": 0,
+            "type": "Volume",
+            "value": {
+              "total_allocation_units": {
+                "age": 0,
+                "type": "long",
+                "value": 647576
+              },
+              "bytes_per_sector": {
+                "age": 0,
+                "type": "long",
+                "value": 4096
+              },
+              "sectors_per_allocation_unit": {
+                "age": 0,
+                "type": "long",
+                "value": 1
+              },
+              "unixvolume": {
+                "age": 0,
+                "type": "UnixVolume",
+                "value": {
+                  "mount_point": {
+                    "age": 0,
+                    "type": "unicode",
+                    "value": "/"
+                  }
+                }
+              },
+              "actual_available_allocation_units": {
+                "age": 0,
+                "type": "long",
+                "value": 238100
+              }
+            }
+          }
+        ],
+        "interfaces": [
+          {
+            "age": 0,
+            "type": "Interface",
+            "value": {
+              "ifname": {
+                "age": 0,
+                "type": "unicode",
+                "value": "lo"
+              },
+              "addresses": [
+                {
+                  "age": 0,
+                  "type": "NetworkAddress",
+                  "value": {
+                    "packed_bytes": {
+                      "age": 0,
+                      "type": "RDFBytes",
+                      "value": "fwAAAQ=="
+                    },
+                    "address_type": {
+                      "age": 0,
+                      "type": "EnumNamedValue",
+                      "value": "INET"
+                    }
+                  }
+                },
+                {
+                  "age": 0,
+                  "type": "NetworkAddress",
+                  "value": {
+                    "packed_bytes": {
+                      "age": 0,
+                      "type": "RDFBytes",
+                      "value": "fwAAAg=="
+                    },
+                    "address_type": {
+                      "age": 0,
+                      "type": "EnumNamedValue",
+                      "value": "INET"
+                    }
+                  }
+                },
+                {
+                  "age": 0,
+                  "type": "NetworkAddress",
+                  "value": {
+                    "packed_bytes": {
+                      "age": 0,
+                      "type": "RDFBytes",
+                      "value": "AAAAAAAAAAAAAAAAAAAAAQ=="
+                    },
+                    "address_type": {
+                      "age": 0,
+                      "type": "EnumNamedValue",
+                      "value": "INET6"
+                    }
+                  }
+                }
+              ],
+              "mac_address": {
+                "age": 0,
+                "type": "MacAddress",
+                "value": "AAAAAAAA"
+              }
+            }
+          },
+          {
+            "age": 0,
+            "type": "Interface",
+            "value": {
+              "ifname": {
+                "age": 0,
+                "type": "unicode",
+                "value": "eth0"
+              },
+              "addresses": [
+                {
+                  "age": 0,
+                  "type": "NetworkAddress",
+                  "value": {
+                    "packed_bytes": {
+                      "age": 0,
+                      "type": "RDFBytes",
+                      "value": "ChwvHw=="
+                    },
+                    "address_type": {
+                      "age": 0,
+                      "type": "EnumNamedValue",
+                      "value": "INET"
+                    }
+                  }
+                },
+                {
+                  "age": 0,
+                  "type": "NetworkAddress",
+                  "value": {
+                    "packed_bytes": {
+                      "age": 0,
+                      "type": "RDFBytes",
+                      "value": "/oAAAAAAAABQVAD//rYBbw=="
+                    },
+                    "address_type": {
+                      "age": 0,
+                      "type": "EnumNamedValue",
+                      "value": "INET6"
+                    }
+                  }
+                }
+              ],
+              "mac_address": {
+                "age": 0,
+                "type": "MacAddress",
+                "value": "UlQAtgFv"
+              }
+            }
+          }
+        ],
+        "last_seen_at": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496037759858961
+        },
+        "hardware_info": {
+          "age": 1495545519133569,
+          "type": "HardwareInfo",
+          "value": {
+            "system_product_name": {
+              "age": 0,
+              "type": "unicode",
+              "value": "Standard PC"
+            },
+            "system_family": {
+              "age": 0,
+              "type": "unicode",
+              "value": "Not Specified"
+            },
+            "bios_vendor": {
+              "age": 0,
+              "type": "unicode",
+              "value": "SeaBIOS"
+            },
+            "system_sku_number": {
+              "age": 0,
+              "type": "unicode",
+              "value": "Not Specified"
+            },
+            "bios_rom_size": {
+              "age": 0,
+              "type": "unicode",
+              "value": "64 kB"
+            },
+            "system_uuid": {
+              "age": 0,
+              "type": "unicode",
+              "value": "7777346E-E42F-C14D-8BE5-7AA4FA910DF9"
+            },
+            "system_manufacturer": {
+              "age": 0,
+              "type": "unicode",
+              "value": "QEMU"
+            },
+            "bios_release_date": {
+              "age": 0,
+              "type": "unicode",
+              "value": "04/01/2014"
+            },
+            "bios_version": {
+              "age": 0,
+              "type": "unicode",
+              "value": "1.9.3-20161116_142049-atsina"
+            },
+            "serial_number": {
+              "age": 0,
+              "type": "unicode",
+              "value": "Not Specified"
+            },
+            "bios_revision": {
+              "age": 0,
+              "type": "unicode",
+              "value": "0.0"
+            }
+          }
+        },
+        "os_info": {
+          "age": 0,
+          "type": "Uname",
+          "value": {
+            "node": {
+              "age": 0,
+              "type": "unicode",
+              "value": "sles11"
+            },
+            "kernel": {
+              "age": 0,
+              "type": "unicode",
+              "value": "3.0.101-63-default"
+            },
+            "install_date": {
+              "age": 1495545511862536,
+              "type": "RDFDatetime",
+              "value": 1490954022000000
+            },
+            "system": {
+              "age": 0,
+              "type": "unicode",
+              "value": "Linux"
+            },
+            "fqdn": {
+              "age": 0,
+              "type": "unicode",
+              "value": "sles11"
+            },
+            "machine": {
+              "age": 0,
+              "type": "unicode",
+              "value": "x86_64"
+            },
+            "version": {
+              "age": 0,
+              "type": "unicode",
+              "value": "11"
+            },
+            "release": {
+              "age": 0,
+              "type": "unicode",
+              "value": "SUSE Linux Enterprise Server "
+            }
+          }
+        }
+      }
+    }
+  ]
+}
+------------------------------------------------------------------------
+{
+  "items": [
+    {
+      "users": [
+        {
+          "username": "root",
+          "last_logon": 1493891999000000,
+          "full_name": "root",
+          "homedir": "/root"
+        },
+        {
+          "username": "user",
+          "last_logon": 1495545259000000,
+          "full_name": "user",
+          "homedir": "/home/user"
+        }
+      ],
+      "urn": "aff4:/C.88ad292d66293c97",
+      "labels": [
+        {
+          "owner": "admin",
+          "timestamp": 1496064040753160,
+          "name": "foo"
+        },
+        {
+          "owner": "admin",
+          "timestamp": 1496068092587261,
+          "name": "barbazqux"
+        },
+        {
+          "owner": "admin",
+          "timestamp": 1496132378786414,
+          "name": "ddd"
+        },
+        {
+          "owner": "admin",
+          "timestamp": 1496132378786618,
+          "name": "eee"
+        },
+        {
+          "owner": "admin",
+          "timestamp": 1496132378786666,
+          "name": "fff"
+        }
+      ],
+      "agent_info": {
+        "client_name": "grr",
+        "client_description": "grr linux amd64",
+        "client_version": 3102,
+        "build_time": "2017-04-10 17:07:32"
+      },
+      "last_clock": 1496037737177941,
+      "hardware_info": {
+        "system_product_name": "Standard PC",
+        "bios_rom_size": "64 kB",
+        "bios_vendor": "SeaBIOS",
+        "system_sku_number": "Not Specified",
+        "system_family": "Not Specified",
+        "system_uuid": "7777346E-E42F-C14D-8BE5-7AA4FA910DF9",
+        "system_manufacturer": "QEMU",
+        "bios_release_date": "04/01/2014",
+        "bios_version": "1.9.3-20161116_142049-atsina",
+        "serial_number": "Not Specified",
+        "bios_revision": "0.0"
+      },
+      "volumes": [
+        {
+          "total_allocation_units": 647576,
+          "bytes_per_sector": 4096,
+          "sectors_per_allocation_unit": 1,
+          "actual_available_allocation_units": 238100,
+          "unixvolume": {
+            "mount_point": "/"
+          }
+        }
+      ],
+      "interfaces": [
+        {
+          "ifname": "lo",
+          "addresses": [
+            {
+              "packed_bytes": "fwAAAQ==",
+              "address_type": "INET"
+            },
+            {
+              "packed_bytes": "fwAAAg==",
+              "address_type": "INET"
+            },
+            {
+              "packed_bytes": "AAAAAAAAAAAAAAAAAAAAAQ==",
+              "address_type": "INET6"
+            }
+          ],
+          "mac_address": "AAAAAAAA"
+        },
+        {
+          "ifname": "eth0",
+          "addresses": [
+            {
+              "packed_bytes": "ChwvHw==",
+              "address_type": "INET"
+            },
+            {
+              "packed_bytes": "/oAAAAAAAABQVAD//rYBbw==",
+              "address_type": "INET6"
+            }
+          ],
+          "mac_address": "UlQAtgFv"
+        }
+      ],
+      "last_seen_at": 1496037759858961,
+      "first_seen_at": 1495545505890700,
+      "os_info": {
+        "node": "sles11",
+        "kernel": "3.0.101-63-default",
+        "install_date": 1490954022000000,
+        "system": "Linux",
+        "fqdn": "sles11",
+        "machine": "x86_64",
+        "version": "11",
+        "release": "SUSE Linux Enterprise Server "
+      }
+    }
+  ]
+}
+========================================================================
+http://10.28.47.155:8000/api/clients/C.88ad292d66293c97/flows
+{
+  "items": [
+    {
+      "age": 0,
+      "type": "ApiFlow",
+      "value": {
+        "last_active_at": {
+          "age": 1496490532374150,
+          "type": "RDFDatetime",
+          "value": 1496490532374126
+        },
+        "nested_flows": [],
+        "name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "KeepAlive"
+        },
+        "creator": {
+          "age": 0,
+          "type": "unicode",
+          "value": "admin"
+        },
+        "urn": {
+          "age": 0,
+          "type": "SessionID",
+          "value": "aff4:/C.88ad292d66293c97/flows/F:C1B23B9B"
+        },
+        "args": {
+          "age": 0,
+          "type": "KeepAliveArgs",
+          "value": {
+            "duration": {
+              "age": 0,
+              "type": "Duration",
+              "value": 300
+            }
+          }
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "RUNNING"
+        },
+        "started_at": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496490528747438
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiFlow",
+      "value": {
+        "last_active_at": {
+          "age": 1495545519152694,
+          "type": "RDFDatetime",
+          "value": 1495545519152675
+        },
+        "nested_flows": [
+          {
+            "age": 0,
+            "type": "ApiFlow",
+            "value": {
+              "last_active_at": {
+                "age": 1495545518877587,
+                "type": "RDFDatetime",
+                "value": 1495545518877568
+              },
+              "nested_flows": [],
+              "name": {
+                "age": 0,
+                "type": "unicode",
+                "value": "ArtifactCollectorFlow"
+              },
+              "creator": {
+                "age": 0,
+                "type": "unicode",
+                "value": "GRRWorker"
+              },
+              "urn": {
+                "age": 0,
+                "type": "SessionID",
+                "value": "aff4:/hunts/H:7F1D7469/C.88ad292d66293c97/H:BF67475/H:6987FE4D"
+              },
+              "args": {
+                "age": 0,
+                "type": "ArtifactCollectorFlowArgs",
+                "value": {
+                  "artifact_list": [
+                    {
+                      "age": 0,
+                      "type": "ArtifactName",
+                      "value": "RootDiskVolumeUsage"
+                    },
+                    {
+                      "age": 0,
+                      "type": "ArtifactName",
+                      "value": "WMILogicalDisks"
+                    },
+                    {
+                      "age": 0,
+                      "type": "ArtifactName",
+                      "value": "OSXSPHardwareDataType"
+                    },
+                    {
+                      "age": 0,
+                      "type": "ArtifactName",
+                      "value": "WMIComputerSystemProduct"
+                    },
+                    {
+                      "age": 0,
+                      "type": "ArtifactName",
+                      "value": "LinuxHardwareInfo"
+                    }
+                  ],
+                  "knowledge_base": {
+                    "age": 0,
+                    "type": "KnowledgeBase",
+                    "value": {}
+                  },
+                  "store_results_in_aff4": {
+                    "age": 0,
+                    "type": "RDFBool",
+                    "value": true
+                  }
+                }
+              },
+              "state": {
+                "age": 0,
+                "type": "EnumNamedValue",
+                "value": "TERMINATED"
+              },
+              "started_at": {
+                "age": 0,
+                "type": "RDFDatetime",
+                "value": 1495545516313824
+              }
+            }
+          },
+          {
+            "age": 0,
+            "type": "ApiFlow",
+            "value": {
+              "last_active_at": {
+                "age": 1495545515062175,
+                "type": "RDFDatetime",
+                "value": 1495545515062145
+              },
+              "nested_flows": [
+                {
+                  "age": 0,
+                  "type": "ApiFlow",
+                  "value": {
+                    "last_active_at": {
+                      "age": 1495545514450609,
+                      "type": "RDFDatetime",
+                      "value": 1495545514450579
+                    },
+                    "nested_flows": [
+                      {
+                        "age": 0,
+                        "type": "ApiFlow",
+                        "value": {
+                          "last_active_at": {
+                            "age": 1495545513791286,
+                            "type": "RDFDatetime",
+                            "value": 1495545513791267
+                          },
+                          "nested_flows": [],
+                          "name": {
+                            "age": 0,
+                            "type": "unicode",
+                            "value": "FileFinder"
+                          },
+                          "creator": {
+                            "age": 0,
+                            "type": "unicode",
+                            "value": "GRRWorker"
+                          },
+                          "urn": {
+                            "age": 0,
+                            "type": "SessionID",
+                            "value": "aff4:/hunts/H:7F1D7469/C.88ad292d66293c97/H:BF67475/H:79B68B05/H:B2F5AE5E/H:1F45CBF9"
+                          },
+                          "args": {
+                            "age": 0,
+                            "type": "FileFinderArgs",
+                            "value": {
+                              "action": {
+                                "age": 0,
+                                "type": "FileFinderAction",
+                                "value": {
+                                  "download": {
+                                    "age": 0,
+                                    "type": "FileFinderDownloadActionOptions",
+                                    "value": {
+                                      "max_size": {
+                                        "age": 0,
+                                        "type": "ByteSize",
+                                        "value": 100000000
+                                      }
+                                    }
+                                  },
+                                  "action_type": {
+                                    "age": 0,
+                                    "type": "EnumNamedValue",
+                                    "value": "DOWNLOAD"
+                                  }
+                                }
+                              },
+                              "paths": [
+                                {
+                                  "age": 0,
+                                  "type": "GlobExpression",
+                                  "value": "/etc/oracle-release"
+                                },
+                                {
+                                  "age": 0,
+                                  "type": "GlobExpression",
+                                  "value": "/etc/redhat-release"
+                                },
+                                {
+                                  "age": 0,
+                                  "type": "GlobExpression",
+                                  "value": "/etc/enterprise-release"
+                                },
+                                {
+                                  "age": 0,
+                                  "type": "GlobExpression",
+                                  "value": "/etc/lsb-release"
+                                }
+                              ],
+                              "pathtype": {
+                                "age": 0,
+                                "type": "EnumNamedValue",
+                                "value": "OS"
+                              },
+                              "file_size": {
+                                "age": 0,
+                                "type": "ByteSize",
+                                "value": 100000000
+                              }
+                            }
+                          },
+                          "state": {
+                            "age": 0,
+                            "type": "EnumNamedValue",
+                            "value": "TERMINATED"
+                          },
+                          "started_at": {
+                            "age": 0,
+                            "type": "RDFDatetime",
+                            "value": 1495545512531663
+                          }
+                        }
+                      }
+                    ],
+                    "name": {
+                      "age": 0,
+                      "type": "unicode",
+                      "value": "ArtifactCollectorFlow"
+                    },
+                    "creator": {
+                      "age": 0,
+                      "type": "unicode",
+                      "value": "GRRWorker"
+                    },
+                    "urn": {
+                      "age": 0,
+                      "type": "SessionID",
+                      "value": "aff4:/hunts/H:7F1D7469/C.88ad292d66293c97/H:BF67475/H:79B68B05/H:B2F5AE5E"
+                    },
+                    "args": {
+                      "age": 0,
+                      "type": "ArtifactCollectorFlowArgs",
+                      "value": {
+                        "artifact_list": [
+                          {
+                            "age": 0,
+                            "type": "ArtifactName",
+                            "value": "LinuxRelease"
+                          }
+                        ],
+                        "knowledge_base": {
+                          "age": 0,
+                          "type": "KnowledgeBase",
+                          "value": {
+                            "os_major_version": {
+                              "age": 0,
+                              "type": "long",
+                              "value": 11
+                            },
+                            "hostname": {
+                              "age": 0,
+                              "type": "unicode",
+                              "value": "sles11"
+                            },
+                            "os": {
+                              "age": 0,
+                              "type": "unicode",
+                              "value": "Linux"
+                            },
+                            "os_minor_version": {
+                              "age": 0,
+                              "type": "long",
+                              "value": 0
+                            }
+                          }
+                        },
+                        "store_results_in_aff4": {
+                          "age": 0,
+                          "type": "RDFBool",
+                          "value": false
+                        }
+                      }
+                    },
+                    "state": {
+                      "age": 0,
+                      "type": "EnumNamedValue",
+                      "value": "TERMINATED"
+                    },
+                    "started_at": {
+                      "age": 0,
+                      "type": "RDFDatetime",
+                      "value": 1495545511858356
+                    }
+                  }
+                },
+                {
+                  "age": 0,
+                  "type": "ApiFlow",
+                  "value": {
+                    "last_active_at": {
+                      "age": 1495545513803775,
+                      "type": "RDFDatetime",
+                      "value": 1495545513803757
+                    },
+                    "nested_flows": [],
+                    "name": {
+                      "age": 0,
+                      "type": "unicode",
+                      "value": "ArtifactCollectorFlow"
+                    },
+                    "creator": {
+                      "age": 0,
+                      "type": "unicode",
+                      "value": "GRRWorker"
+                    },
+                    "urn": {
+                      "age": 0,
+                      "type": "SessionID",
+                      "value": "aff4:/hunts/H:7F1D7469/C.88ad292d66293c97/H:BF67475/H:79B68B05/H:FFCEB8E0"
+                    },
+                    "args": {
+                      "age": 0,
+                      "type": "ArtifactCollectorFlowArgs",
+                      "value": {
+                        "artifact_list": [
+                          {
+                            "age": 0,
+                            "type": "ArtifactName",
+                            "value": "LinuxUserProfiles"
+                          }
+                        ],
+                        "knowledge_base": {
+                          "age": 0,
+                          "type": "KnowledgeBase",
+                          "value": {
+                            "os_major_version": {
+                              "age": 0,
+                              "type": "long",
+                              "value": 11
+                            },
+                            "hostname": {
+                              "age": 0,
+                              "type": "unicode",
+                              "value": "sles11"
+                            },
+                            "os": {
+                              "age": 0,
+                              "type": "unicode",
+                              "value": "Linux"
+                            },
+                            "os_minor_version": {
+                              "age": 0,
+                              "type": "long",
+                              "value": 0
+                            }
+                          }
+                        },
+                        "store_results_in_aff4": {
+                          "age": 0,
+                          "type": "RDFBool",
+                          "value": false
+                        }
+                      }
+                    },
+                    "state": {
+                      "age": 0,
+                      "type": "EnumNamedValue",
+                      "value": "TERMINATED"
+                    },
+                    "started_at": {
+                      "age": 0,
+                      "type": "RDFDatetime",
+                      "value": 1495545511855643
+                    }
+                  }
+                }
+              ],
+              "name": {
+                "age": 0,
+                "type": "unicode",
+                "value": "KnowledgeBaseInitializationFlow"
+              },
+              "creator": {
+                "age": 0,
+                "type": "unicode",
+                "value": "GRRWorker"
+              },
+              "urn": {
+                "age": 0,
+                "type": "SessionID",
+                "value": "aff4:/hunts/H:7F1D7469/C.88ad292d66293c97/H:BF67475/H:79B68B05"
+              },
+              "args": {
+                "age": 0,
+                "type": "KnowledgeBaseInitializationArgs",
+                "value": {
+                  "require_complete": {
+                    "age": 0,
+                    "type": "RDFBool",
+                    "value": false
+                  },
+                  "lightweight": {
+                    "age": 0,
+                    "type": "RDFBool",
+                    "value": false
+                  }
+                }
+              },
+              "state": {
+                "age": 0,
+                "type": "EnumNamedValue",
+                "value": "TERMINATED"
+              },
+              "started_at": {
+                "age": 0,
+                "type": "RDFDatetime",
+                "value": 1495545509025445
+              }
+            }
+          }
+        ],
+        "name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "Interrogate"
+        },
+        "creator": {
+          "age": 0,
+          "type": "unicode",
+          "value": "GRRWorker"
+        },
+        "urn": {
+          "age": 0,
+          "type": "SessionID",
+          "value": "aff4:/C.88ad292d66293c97/flows/H:7F1D7469:hunt"
+        },
+        "args": {
+          "age": 0,
+          "type": "InterrogateArgs",
+          "value": {
+            "lightweight": {
+              "age": 0,
+              "type": "RDFBool",
+              "value": false
+            }
+          }
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "TERMINATED"
+        },
+        "started_at": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1495545508044007
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiFlow",
+      "value": {
+        "last_active_at": {
+          "age": 1495545520681481,
+          "type": "RDFDatetime",
+          "value": 1495545520681465
+        },
+        "nested_flows": [
+          {
+            "age": 0,
+            "type": "ApiFlow",
+            "value": {
+              "last_active_at": {
+                "age": 1495545519144388,
+                "type": "RDFDatetime",
+                "value": 1495545519144358
+              },
+              "nested_flows": [],
+              "name": {
+                "age": 0,
+                "type": "unicode",
+                "value": "ArtifactCollectorFlow"
+              },
+              "creator": {
+                "age": 0,
+                "type": "unicode",
+                "value": "GRRWorker"
+              },
+              "urn": {
+                "age": 0,
+                "type": "SessionID",
+                "value": "aff4:/C.88ad292d66293c97/flows/E:D751F520/E:85DD1E83"
+              },
+              "args": {
+                "age": 0,
+                "type": "ArtifactCollectorFlowArgs",
+                "value": {
+                  "artifact_list": [
+                    {
+                      "age": 0,
+                      "type": "ArtifactName",
+                      "value": "RootDiskVolumeUsage"
+                    },
+                    {
+                      "age": 0,
+                      "type": "ArtifactName",
+                      "value": "WMILogicalDisks"
+                    },
+                    {
+                      "age": 0,
+                      "type": "ArtifactName",
+                      "value": "OSXSPHardwareDataType"
+                    },
+                    {
+                      "age": 0,
+                      "type": "ArtifactName",
+                      "value": "WMIComputerSystemProduct"
+                    },
+                    {
+                      "age": 0,
+                      "type": "ArtifactName",
+                      "value": "LinuxHardwareInfo"
+                    }
+                  ],
+                  "knowledge_base": {
+                    "age": 0,
+                    "type": "KnowledgeBase",
+                    "value": {}
+                  },
+                  "store_results_in_aff4": {
+                    "age": 0,
+                    "type": "RDFBool",
+                    "value": true
+                  }
+                }
+              },
+              "state": {
+                "age": 0,
+                "type": "EnumNamedValue",
+                "value": "TERMINATED"
+              },
+              "started_at": {
+                "age": 0,
+                "type": "RDFDatetime",
+                "value": 1495545517238124
+              }
+            }
+          },
+          {
+            "age": 0,
+            "type": "ApiFlow",
+            "value": {
+              "last_active_at": {
+                "age": 1495545516013635,
+                "type": "RDFDatetime",
+                "value": 1495545516013616
+              },
+              "nested_flows": [
+                {
+                  "age": 0,
+                  "type": "ApiFlow",
+                  "value": {
+                    "last_active_at": {
+                      "age": 1495545514739784,
+                      "type": "RDFDatetime",
+                      "value": 1495545514739762
+                    },
+                    "nested_flows": [
+                      {
+                        "age": 0,
+                        "type": "ApiFlow",
+                        "value": {
+                          "last_active_at": {
+                            "age": 1495545513579200,
+                            "type": "RDFDatetime",
+                            "value": 1495545513579138
+                          },
+                          "nested_flows": [],
+                          "name": {
+                            "age": 0,
+                            "type": "unicode",
+                            "value": "FileFinder"
+                          },
+                          "creator": {
+                            "age": 0,
+                            "type": "unicode",
+                            "value": "GRRWorker"
+                          },
+                          "urn": {
+                            "age": 0,
+                            "type": "SessionID",
+                            "value": "aff4:/C.88ad292d66293c97/flows/E:D751F520/E:9524512E/E:7CFC9389/E:C2315F9A"
+                          },
+                          "args": {
+                            "age": 0,
+                            "type": "FileFinderArgs",
+                            "value": {
+                              "action": {
+                                "age": 0,
+                                "type": "FileFinderAction",
+                                "value": {
+                                  "download": {
+                                    "age": 0,
+                                    "type": "FileFinderDownloadActionOptions",
+                                    "value": {
+                                      "max_size": {
+                                        "age": 0,
+                                        "type": "ByteSize",
+                                        "value": 100000000
+                                      }
+                                    }
+                                  },
+                                  "action_type": {
+                                    "age": 0,
+                                    "type": "EnumNamedValue",
+                                    "value": "DOWNLOAD"
+                                  }
+                                }
+                              },
+                              "paths": [
+                                {
+                                  "age": 0,
+                                  "type": "GlobExpression",
+                                  "value": "/etc/oracle-release"
+                                },
+                                {
+                                  "age": 0,
+                                  "type": "GlobExpression",
+                                  "value": "/etc/redhat-release"
+                                },
+                                {
+                                  "age": 0,
+                                  "type": "GlobExpression",
+                                  "value": "/etc/enterprise-release"
+                                },
+                                {
+                                  "age": 0,
+                                  "type": "GlobExpression",
+                                  "value": "/etc/lsb-release"
+                                }
+                              ],
+                              "pathtype": {
+                                "age": 0,
+                                "type": "EnumNamedValue",
+                                "value": "OS"
+                              },
+                              "file_size": {
+                                "age": 0,
+                                "type": "ByteSize",
+                                "value": 100000000
+                              }
+                            }
+                          },
+                          "state": {
+                            "age": 0,
+                            "type": "EnumNamedValue",
+                            "value": "TERMINATED"
+                          },
+                          "started_at": {
+                            "age": 0,
+                            "type": "RDFDatetime",
+                            "value": 1495545512509400
+                          }
+                        }
+                      }
+                    ],
+                    "name": {
+                      "age": 0,
+                      "type": "unicode",
+                      "value": "ArtifactCollectorFlow"
+                    },
+                    "creator": {
+                      "age": 0,
+                      "type": "unicode",
+                      "value": "GRRWorker"
+                    },
+                    "urn": {
+                      "age": 0,
+                      "type": "SessionID",
+                      "value": "aff4:/C.88ad292d66293c97/flows/E:D751F520/E:9524512E/E:7CFC9389"
+                    },
+                    "args": {
+                      "age": 0,
+                      "type": "ArtifactCollectorFlowArgs",
+                      "value": {
+                        "artifact_list": [
+                          {
+                            "age": 0,
+                            "type": "ArtifactName",
+                            "value": "LinuxRelease"
+                          }
+                        ],
+                        "knowledge_base": {
+                          "age": 0,
+                          "type": "KnowledgeBase",
+                          "value": {
+                            "os_major_version": {
+                              "age": 0,
+                              "type": "long",
+                              "value": 11
+                            },
+                            "hostname": {
+                              "age": 0,
+                              "type": "unicode",
+                              "value": "sles11"
+                            },
+                            "os": {
+                              "age": 0,
+                              "type": "unicode",
+                              "value": "Linux"
+                            },
+                            "os_minor_version": {
+                              "age": 0,
+                              "type": "long",
+                              "value": 0
+                            }
+                          }
+                        },
+                        "store_results_in_aff4": {
+                          "age": 0,
+                          "type": "RDFBool",
+                          "value": false
+                        }
+                      }
+                    },
+                    "state": {
+                      "age": 0,
+                      "type": "EnumNamedValue",
+                      "value": "TERMINATED"
+                    },
+                    "started_at": {
+                      "age": 0,
+                      "type": "RDFDatetime",
+                      "value": 1495545511617089
+                    }
+                  }
+                },
+                {
+                  "age": 0,
+                  "type": "ApiFlow",
+                  "value": {
+                    "last_active_at": {
+                      "age": 1495545513438055,
+                      "type": "RDFDatetime",
+                      "value": 1495545513438029
+                    },
+                    "nested_flows": [],
+                    "name": {
+                      "age": 0,
+                      "type": "unicode",
+                      "value": "ArtifactCollectorFlow"
+                    },
+                    "creator": {
+                      "age": 0,
+                      "type": "unicode",
+                      "value": "GRRWorker"
+                    },
+                    "urn": {
+                      "age": 0,
+                      "type": "SessionID",
+                      "value": "aff4:/C.88ad292d66293c97/flows/E:D751F520/E:9524512E/E:1191AD23"
+                    },
+                    "args": {
+                      "age": 0,
+                      "type": "ArtifactCollectorFlowArgs",
+                      "value": {
+                        "artifact_list": [
+                          {
+                            "age": 0,
+                            "type": "ArtifactName",
+                            "value": "LinuxUserProfiles"
+                          }
+                        ],
+                        "knowledge_base": {
+                          "age": 0,
+                          "type": "KnowledgeBase",
+                          "value": {
+                            "os_major_version": {
+                              "age": 0,
+                              "type": "long",
+                              "value": 11
+                            },
+                            "hostname": {
+                              "age": 0,
+                              "type": "unicode",
+                              "value": "sles11"
+                            },
+                            "os": {
+                              "age": 0,
+                              "type": "unicode",
+                              "value": "Linux"
+                            },
+                            "os_minor_version": {
+                              "age": 0,
+                              "type": "long",
+                              "value": 0
+                            }
+                          }
+                        },
+                        "store_results_in_aff4": {
+                          "age": 0,
+                          "type": "RDFBool",
+                          "value": false
+                        }
+                      }
+                    },
+                    "state": {
+                      "age": 0,
+                      "type": "EnumNamedValue",
+                      "value": "TERMINATED"
+                    },
+                    "started_at": {
+                      "age": 0,
+                      "type": "RDFDatetime",
+                      "value": 1495545511607006
+                    }
+                  }
+                }
+              ],
+              "name": {
+                "age": 0,
+                "type": "unicode",
+                "value": "KnowledgeBaseInitializationFlow"
+              },
+              "creator": {
+                "age": 0,
+                "type": "unicode",
+                "value": "GRRWorker"
+              },
+              "urn": {
+                "age": 0,
+                "type": "SessionID",
+                "value": "aff4:/C.88ad292d66293c97/flows/E:D751F520/E:9524512E"
+              },
+              "args": {
+                "age": 0,
+                "type": "KnowledgeBaseInitializationArgs",
+                "value": {
+                  "require_complete": {
+                    "age": 0,
+                    "type": "RDFBool",
+                    "value": false
+                  },
+                  "lightweight": {
+                    "age": 0,
+                    "type": "RDFBool",
+                    "value": true
+                  }
+                }
+              },
+              "state": {
+                "age": 0,
+                "type": "EnumNamedValue",
+                "value": "TERMINATED"
+              },
+              "started_at": {
+                "age": 0,
+                "type": "RDFDatetime",
+                "value": 1495545508404063
+              }
+            }
+          }
+        ],
+        "name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "Interrogate"
+        },
+        "creator": {
+          "age": 0,
+          "type": "unicode",
+          "value": "GRRWorker"
+        },
+        "urn": {
+          "age": 0,
+          "type": "SessionID",
+          "value": "aff4:/C.88ad292d66293c97/flows/E:D751F520"
+        },
+        "args": {
+          "age": 0,
+          "type": "InterrogateArgs",
+          "value": {}
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "TERMINATED"
+        },
+        "started_at": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1495545506784361
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiFlow",
+      "value": {
+        "last_active_at": {
+          "age": 1495545505942319,
+          "type": "RDFDatetime",
+          "value": 1495545505942299
+        },
+        "nested_flows": [],
+        "name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "CAEnroler"
+        },
+        "creator": {
+          "age": 0,
+          "type": "unicode",
+          "value": "GRRWorker"
+        },
+        "urn": {
+          "age": 0,
+          "type": "SessionID",
+          "value": "aff4:/C.88ad292d66293c97/flows/E:6D2E46AA"
+        },
+        "args": {
+          "age": 0,
+          "type": "CAEnrolerArgs",
+          "value": {
+            "csr": {
+              "age": 0,
+              "type": "Certificate",
+              "value": {
+                "pem": {
+                  "age": 0,
+                  "type": "str",
+                  "value": "-----BEGIN CERTIFICATE REQUEST-----\nMIICaDCCAVACAQAwIzEhMB8GA1UEAwwYYWZmNDovQy44OGFkMjkyZDY2MjkzYzk3\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA53v81G31qkNF1yXwh4Os\nCXQOqSGkWeZ0UGxUxnd8j0tizErqgLfy4mX60W04L35Lzhm+l38Q9a3CUp1inQg3\nc4yTdMiAxvwQ/aE37pcDCg/K9oHWuF7Vs4lKVMIpXwSNIyRIpC9DCiMohLh7ZL/S\nlSAWVThNz0mCTFwjECpG9xTv+cYQn3F8lXjXBxyro6tnEDbdAkT1xFwJo4VJTip+\ndui6ZFXG/TecqHOhnK6pvV3KnxXV64D2DJxQMFbXEHEE3KLYhvcQuKlf1loaYaYU\nhO7xJNPbKgcJ/9XH3wgFzIVWFYlzL+SKZDjHfRiIdq/zmLPGOAH9O0BHO0THpjLZ\nlQIDAQABoAAwDQYJKoZIhvcNAQEFBQADggEBAM6WtGRisWuP3oyg1NI5HZw83zW1\n5OEzP6DUbZoLDF4t6JJunQf6EgOKn2UnrwM2M4/BQD3leD8pHuGgVp1dtkOyI0h8\nw1CrlThJMyW15VkqlfCrIYPtnM3i4OyHVeW03BBGiAVVOWW0J3uoODxJIAn7BOKL\nuAOcwQWRc2DjbLv1MVYJ5sqFxAKEazzwWSFbnM7HXDN6yppQSKtEJx9PZSBVpktj\nxCszbc06S4Kdq9yKSTgyBBgIOn8ueGjjYtf+zY5dMJoL9CwZokcRwP3G09gibCP2\nO/sPIPxXJFH/esqt6EC4XI/4+hRl5LMIEOHFNYS5D2nhHE57ll1+asiyB2g=\n-----END CERTIFICATE REQUEST-----\n"
+                },
+                "type": {
+                  "age": 0,
+                  "type": "EnumNamedValue",
+                  "value": "CSR"
+                }
+              }
+            }
+          }
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "TERMINATED"
+        },
+        "started_at": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1495545505855998
+        }
+      }
+    }
+  ]
+}
+------------------------------------------------------------------------
+{
+  "items": [
+    {
+      "last_active_at": 1496490532374126,
+      "args": {
+        "duration": 300
+      },
+      "name": "KeepAlive",
+      "creator": "admin",
+      "urn": "aff4:/C.88ad292d66293c97/flows/F:C1B23B9B",
+      "nested_flows": [],
+      "state": "RUNNING",
+      "started_at": 1496490528747438
+    },
+    {
+      "last_active_at": 1495545519152675,
+      "args": {
+        "lightweight": false
+      },
+      "name": "Interrogate",
+      "creator": "GRRWorker",
+      "urn": "aff4:/C.88ad292d66293c97/flows/H:7F1D7469:hunt",
+      "nested_flows": [
+        {
+          "last_active_at": 1495545518877568,
+          "args": {
+            "artifact_list": [
+              "RootDiskVolumeUsage",
+              "WMILogicalDisks",
+              "OSXSPHardwareDataType",
+              "WMIComputerSystemProduct",
+              "LinuxHardwareInfo"
+            ],
+            "knowledge_base": {},
+            "store_results_in_aff4": true
+          },
+          "name": "ArtifactCollectorFlow",
+          "creator": "GRRWorker",
+          "urn": "aff4:/hunts/H:7F1D7469/C.88ad292d66293c97/H:BF67475/H:6987FE4D",
+          "nested_flows": [],
+          "state": "TERMINATED",
+          "started_at": 1495545516313824
+        },
+        {
+          "last_active_at": 1495545515062145,
+          "args": {
+            "require_complete": false,
+            "lightweight": false
+          },
+          "name": "KnowledgeBaseInitializationFlow",
+          "creator": "GRRWorker",
+          "urn": "aff4:/hunts/H:7F1D7469/C.88ad292d66293c97/H:BF67475/H:79B68B05",
+          "nested_flows": [
+            {
+              "last_active_at": 1495545514450579,
+              "args": {
+                "artifact_list": [
+                  "LinuxRelease"
+                ],
+                "knowledge_base": {
+                  "os_major_version": 11,
+                  "hostname": "sles11",
+                  "os": "Linux",
+                  "os_minor_version": 0
+                },
+                "store_results_in_aff4": false
+              },
+              "name": "ArtifactCollectorFlow",
+              "creator": "GRRWorker",
+              "urn": "aff4:/hunts/H:7F1D7469/C.88ad292d66293c97/H:BF67475/H:79B68B05/H:B2F5AE5E",
+              "nested_flows": [
+                {
+                  "last_active_at": 1495545513791267,
+                  "args": {
+                    "action": {
+                      "download": {
+                        "max_size": 100000000
+                      },
+                      "action_type": "DOWNLOAD"
+                    },
+                    "paths": [
+                      "/etc/oracle-release",
+                      "/etc/redhat-release",
+                      "/etc/enterprise-release",
+                      "/etc/lsb-release"
+                    ],
+                    "pathtype": "OS",
+                    "file_size": 100000000
+                  },
+                  "name": "FileFinder",
+                  "creator": "GRRWorker",
+                  "urn": "aff4:/hunts/H:7F1D7469/C.88ad292d66293c97/H:BF67475/H:79B68B05/H:B2F5AE5E/H:1F45CBF9",
+                  "nested_flows": [],
+                  "state": "TERMINATED",
+                  "started_at": 1495545512531663
+                }
+              ],
+              "state": "TERMINATED",
+              "started_at": 1495545511858356
+            },
+            {
+              "last_active_at": 1495545513803757,
+              "args": {
+                "artifact_list": [
+                  "LinuxUserProfiles"
+                ],
+                "knowledge_base": {
+                  "os_major_version": 11,
+                  "hostname": "sles11",
+                  "os": "Linux",
+                  "os_minor_version": 0
+                },
+                "store_results_in_aff4": false
+              },
+              "name": "ArtifactCollectorFlow",
+              "creator": "GRRWorker",
+              "urn": "aff4:/hunts/H:7F1D7469/C.88ad292d66293c97/H:BF67475/H:79B68B05/H:FFCEB8E0",
+              "nested_flows": [],
+              "state": "TERMINATED",
+              "started_at": 1495545511855643
+            }
+          ],
+          "state": "TERMINATED",
+          "started_at": 1495545509025445
+        }
+      ],
+      "state": "TERMINATED",
+      "started_at": 1495545508044007
+    },
+    {
+      "last_active_at": 1495545520681465,
+      "args": {},
+      "name": "Interrogate",
+      "creator": "GRRWorker",
+      "urn": "aff4:/C.88ad292d66293c97/flows/E:D751F520",
+      "nested_flows": [
+        {
+          "last_active_at": 1495545519144358,
+          "args": {
+            "artifact_list": [
+              "RootDiskVolumeUsage",
+              "WMILogicalDisks",
+              "OSXSPHardwareDataType",
+              "WMIComputerSystemProduct",
+              "LinuxHardwareInfo"
+            ],
+            "knowledge_base": {},
+            "store_results_in_aff4": true
+          },
+          "name": "ArtifactCollectorFlow",
+          "creator": "GRRWorker",
+          "urn": "aff4:/C.88ad292d66293c97/flows/E:D751F520/E:85DD1E83",
+          "nested_flows": [],
+          "state": "TERMINATED",
+          "started_at": 1495545517238124
+        },
+        {
+          "last_active_at": 1495545516013616,
+          "args": {
+            "require_complete": false,
+            "lightweight": true
+          },
+          "name": "KnowledgeBaseInitializationFlow",
+          "creator": "GRRWorker",
+          "urn": "aff4:/C.88ad292d66293c97/flows/E:D751F520/E:9524512E",
+          "nested_flows": [
+            {
+              "last_active_at": 1495545514739762,
+              "args": {
+                "artifact_list": [
+                  "LinuxRelease"
+                ],
+                "knowledge_base": {
+                  "os_major_version": 11,
+                  "hostname": "sles11",
+                  "os": "Linux",
+                  "os_minor_version": 0
+                },
+                "store_results_in_aff4": false
+              },
+              "name": "ArtifactCollectorFlow",
+              "creator": "GRRWorker",
+              "urn": "aff4:/C.88ad292d66293c97/flows/E:D751F520/E:9524512E/E:7CFC9389",
+              "nested_flows": [
+                {
+                  "last_active_at": 1495545513579138,
+                  "args": {
+                    "action": {
+                      "download": {
+                        "max_size": 100000000
+                      },
+                      "action_type": "DOWNLOAD"
+                    },
+                    "paths": [
+                      "/etc/oracle-release",
+                      "/etc/redhat-release",
+                      "/etc/enterprise-release",
+                      "/etc/lsb-release"
+                    ],
+                    "pathtype": "OS",
+                    "file_size": 100000000
+                  },
+                  "name": "FileFinder",
+                  "creator": "GRRWorker",
+                  "urn": "aff4:/C.88ad292d66293c97/flows/E:D751F520/E:9524512E/E:7CFC9389/E:C2315F9A",
+                  "nested_flows": [],
+                  "state": "TERMINATED",
+                  "started_at": 1495545512509400
+                }
+              ],
+              "state": "TERMINATED",
+              "started_at": 1495545511617089
+            },
+            {
+              "last_active_at": 1495545513438029,
+              "args": {
+                "artifact_list": [
+                  "LinuxUserProfiles"
+                ],
+                "knowledge_base": {
+                  "os_major_version": 11,
+                  "hostname": "sles11",
+                  "os": "Linux",
+                  "os_minor_version": 0
+                },
+                "store_results_in_aff4": false
+              },
+              "name": "ArtifactCollectorFlow",
+              "creator": "GRRWorker",
+              "urn": "aff4:/C.88ad292d66293c97/flows/E:D751F520/E:9524512E/E:1191AD23",
+              "nested_flows": [],
+              "state": "TERMINATED",
+              "started_at": 1495545511607006
+            }
+          ],
+          "state": "TERMINATED",
+          "started_at": 1495545508404063
+        }
+      ],
+      "state": "TERMINATED",
+      "started_at": 1495545506784361
+    },
+    {
+      "last_active_at": 1495545505942299,
+      "args": {
+        "csr": {
+          "pem": "-----BEGIN CERTIFICATE REQUEST-----\nMIICaDCCAVACAQAwIzEhMB8GA1UEAwwYYWZmNDovQy44OGFkMjkyZDY2MjkzYzk3\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA53v81G31qkNF1yXwh4Os\nCXQOqSGkWeZ0UGxUxnd8j0tizErqgLfy4mX60W04L35Lzhm+l38Q9a3CUp1inQg3\nc4yTdMiAxvwQ/aE37pcDCg/K9oHWuF7Vs4lKVMIpXwSNIyRIpC9DCiMohLh7ZL/S\nlSAWVThNz0mCTFwjECpG9xTv+cYQn3F8lXjXBxyro6tnEDbdAkT1xFwJo4VJTip+\ndui6ZFXG/TecqHOhnK6pvV3KnxXV64D2DJxQMFbXEHEE3KLYhvcQuKlf1loaYaYU\nhO7xJNPbKgcJ/9XH3wgFzIVWFYlzL+SKZDjHfRiIdq/zmLPGOAH9O0BHO0THpjLZ\nlQIDAQABoAAwDQYJKoZIhvcNAQEFBQADggEBAM6WtGRisWuP3oyg1NI5HZw83zW1\n5OEzP6DUbZoLDF4t6JJunQf6EgOKn2UnrwM2M4/BQD3leD8pHuGgVp1dtkOyI0h8\nw1CrlThJMyW15VkqlfCrIYPtnM3i4OyHVeW03BBGiAVVOWW0J3uoODxJIAn7BOKL\nuAOcwQWRc2DjbLv1MVYJ5sqFxAKEazzwWSFbnM7HXDN6yppQSKtEJx9PZSBVpktj\nxCszbc06S4Kdq9yKSTgyBBgIOn8ueGjjYtf+zY5dMJoL9CwZokcRwP3G09gibCP2\nO/sPIPxXJFH/esqt6EC4XI/4+hRl5LMIEOHFNYS5D2nhHE57ll1+asiyB2g=\n-----END CERTIFICATE REQUEST-----\n",
+          "type": "CSR"
+        }
+      },
+      "name": "CAEnroler",
+      "creator": "GRRWorker",
+      "urn": "aff4:/C.88ad292d66293c97/flows/E:6D2E46AA",
+      "nested_flows": [],
+      "state": "TERMINATED",
+      "started_at": 1495545505855998
+    }
+  ]
+}
+========================================================================
+http://10.28.47.155:8000/api/clients/C.88ad292d66293c97/flows/E:6D2E46AA
+{
+  "age": 0,
+  "type": "ApiFlow",
+  "value": {
+    "last_active_at": {
+      "age": 1495545505942319,
+      "type": "RDFDatetime",
+      "value": 1495545505942299
+    },
+    "name": {
+      "age": 0,
+      "type": "unicode",
+      "value": "CAEnroler"
+    },
+    "creator": {
+      "age": 0,
+      "type": "unicode",
+      "value": "GRRWorker"
+    },
+    "urn": {
+      "age": 0,
+      "type": "SessionID",
+      "value": "aff4:/C.88ad292d66293c97/flows/E:6D2E46AA"
+    },
+    "args": {
+      "age": 0,
+      "type": "CAEnrolerArgs",
+      "value": {
+        "csr": {
+          "age": 0,
+          "type": "Certificate",
+          "value": {
+            "pem": {
+              "age": 0,
+              "type": "str",
+              "value": "-----BEGIN CERTIFICATE REQUEST-----\nMIICaDCCAVACAQAwIzEhMB8GA1UEAwwYYWZmNDovQy44OGFkMjkyZDY2MjkzYzk3\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA53v81G31qkNF1yXwh4Os\nCXQOqSGkWeZ0UGxUxnd8j0tizErqgLfy4mX60W04L35Lzhm+l38Q9a3CUp1inQg3\nc4yTdMiAxvwQ/aE37pcDCg/K9oHWuF7Vs4lKVMIpXwSNIyRIpC9DCiMohLh7ZL/S\nlSAWVThNz0mCTFwjECpG9xTv+cYQn3F8lXjXBxyro6tnEDbdAkT1xFwJo4VJTip+\ndui6ZFXG/TecqHOhnK6pvV3KnxXV64D2DJxQMFbXEHEE3KLYhvcQuKlf1loaYaYU\nhO7xJNPbKgcJ/9XH3wgFzIVWFYlzL+SKZDjHfRiIdq/zmLPGOAH9O0BHO0THpjLZ\nlQIDAQABoAAwDQYJKoZIhvcNAQEFBQADggEBAM6WtGRisWuP3oyg1NI5HZw83zW1\n5OEzP6DUbZoLDF4t6JJunQf6EgOKn2UnrwM2M4/BQD3leD8pHuGgVp1dtkOyI0h8\nw1CrlThJMyW15VkqlfCrIYPtnM3i4OyHVeW03BBGiAVVOWW0J3uoODxJIAn7BOKL\nuAOcwQWRc2DjbLv1MVYJ5sqFxAKEazzwWSFbnM7HXDN6yppQSKtEJx9PZSBVpktj\nxCszbc06S4Kdq9yKSTgyBBgIOn8ueGjjYtf+zY5dMJoL9CwZokcRwP3G09gibCP2\nO/sPIPxXJFH/esqt6EC4XI/4+hRl5LMIEOHFNYS5D2nhHE57ll1+asiyB2g=\n-----END CERTIFICATE REQUEST-----\n"
+            },
+            "type": {
+              "age": 0,
+              "type": "EnumNamedValue",
+              "value": "CSR"
+            }
+          }
+        }
+      }
+    },
+    "state": {
+      "age": 0,
+      "type": "EnumNamedValue",
+      "value": "TERMINATED"
+    },
+    "started_at": {
+      "age": 0,
+      "type": "RDFDatetime",
+      "value": 1495545505855998
+    }
+  }
+}
+------------------------------------------------------------------------
+{
+  "last_active_at": 1495545505942299,
+  "name": "CAEnroler",
+  "creator": "GRRWorker",
+  "urn": "aff4:/C.88ad292d66293c97/flows/E:6D2E46AA",
+  "args": {
+    "csr": {
+      "pem": "-----BEGIN CERTIFICATE REQUEST-----\nMIICaDCCAVACAQAwIzEhMB8GA1UEAwwYYWZmNDovQy44OGFkMjkyZDY2MjkzYzk3\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA53v81G31qkNF1yXwh4Os\nCXQOqSGkWeZ0UGxUxnd8j0tizErqgLfy4mX60W04L35Lzhm+l38Q9a3CUp1inQg3\nc4yTdMiAxvwQ/aE37pcDCg/K9oHWuF7Vs4lKVMIpXwSNIyRIpC9DCiMohLh7ZL/S\nlSAWVThNz0mCTFwjECpG9xTv+cYQn3F8lXjXBxyro6tnEDbdAkT1xFwJo4VJTip+\ndui6ZFXG/TecqHOhnK6pvV3KnxXV64D2DJxQMFbXEHEE3KLYhvcQuKlf1loaYaYU\nhO7xJNPbKgcJ/9XH3wgFzIVWFYlzL+SKZDjHfRiIdq/zmLPGOAH9O0BHO0THpjLZ\nlQIDAQABoAAwDQYJKoZIhvcNAQEFBQADggEBAM6WtGRisWuP3oyg1NI5HZw83zW1\n5OEzP6DUbZoLDF4t6JJunQf6EgOKn2UnrwM2M4/BQD3leD8pHuGgVp1dtkOyI0h8\nw1CrlThJMyW15VkqlfCrIYPtnM3i4OyHVeW03BBGiAVVOWW0J3uoODxJIAn7BOKL\nuAOcwQWRc2DjbLv1MVYJ5sqFxAKEazzwWSFbnM7HXDN6yppQSKtEJx9PZSBVpktj\nxCszbc06S4Kdq9yKSTgyBBgIOn8ueGjjYtf+zY5dMJoL9CwZokcRwP3G09gibCP2\nO/sPIPxXJFH/esqt6EC4XI/4+hRl5LMIEOHFNYS5D2nhHE57ll1+asiyB2g=\n-----END CERTIFICATE REQUEST-----\n",
+      "type": "CSR"
+    }
+  },
+  "state": "TERMINATED",
+  "started_at": 1495545505855998
+}
+========================================================================
+http://10.28.47.155:8000/api/clients/C.88ad292d66293c97/flows/E:D751F520
+{
+  "age": 0,
+  "type": "ApiFlow",
+  "value": {
+    "last_active_at": {
+      "age": 1495545520681481,
+      "type": "RDFDatetime",
+      "value": 1495545520681465
+    },
+    "name": {
+      "age": 0,
+      "type": "unicode",
+      "value": "Interrogate"
+    },
+    "creator": {
+      "age": 0,
+      "type": "unicode",
+      "value": "GRRWorker"
+    },
+    "urn": {
+      "age": 0,
+      "type": "SessionID",
+      "value": "aff4:/C.88ad292d66293c97/flows/E:D751F520"
+    },
+    "args": {
+      "age": 0,
+      "type": "InterrogateArgs",
+      "value": {}
+    },
+    "state": {
+      "age": 0,
+      "type": "EnumNamedValue",
+      "value": "TERMINATED"
+    },
+    "started_at": {
+      "age": 0,
+      "type": "RDFDatetime",
+      "value": 1495545506784361
+    }
+  }
+}
+------------------------------------------------------------------------
+{
+  "last_active_at": 1495545520681465,
+  "name": "Interrogate",
+  "creator": "GRRWorker",
+  "urn": "aff4:/C.88ad292d66293c97/flows/E:D751F520",
+  "args": {},
+  "state": "TERMINATED",
+  "started_at": 1495545506784361
+}
+========================================================================
+http://10.28.47.155:8000/api/clients/C.88ad292d66293c97/flows/F:C1B23B9B
+{
+  "age": 0,
+  "type": "ApiFlow",
+  "value": {
+    "last_active_at": {
+      "age": 1496490532374150,
+      "type": "RDFDatetime",
+      "value": 1496490532374126
+    },
+    "name": {
+      "age": 0,
+      "type": "unicode",
+      "value": "KeepAlive"
+    },
+    "creator": {
+      "age": 0,
+      "type": "unicode",
+      "value": "admin"
+    },
+    "urn": {
+      "age": 0,
+      "type": "SessionID",
+      "value": "aff4:/C.88ad292d66293c97/flows/F:C1B23B9B"
+    },
+    "args": {
+      "age": 0,
+      "type": "KeepAliveArgs",
+      "value": {
+        "duration": {
+          "age": 0,
+          "type": "Duration",
+          "value": 300
+        }
+      }
+    },
+    "state": {
+      "age": 0,
+      "type": "EnumNamedValue",
+      "value": "RUNNING"
+    },
+    "started_at": {
+      "age": 0,
+      "type": "RDFDatetime",
+      "value": 1496490528747438
+    }
+  }
+}
+------------------------------------------------------------------------
+{
+  "last_active_at": 1496490532374126,
+  "name": "KeepAlive",
+  "creator": "admin",
+  "urn": "aff4:/C.88ad292d66293c97/flows/F:C1B23B9B",
+  "args": {
+    "duration": 300
+  },
+  "state": "RUNNING",
+  "started_at": 1496490528747438
+}
+========================================================================
+http://10.28.47.155:8000/api/cron-jobs
+{
+  "items": [
+    {
+      "age": 0,
+      "type": "ApiCronJob",
+      "value": {
+        "is_failing": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "description": {
+          "age": 0,
+          "type": "unicode",
+          "value": ""
+        },
+        "periodicity": {
+          "age": 0,
+          "type": "Duration",
+          "value": 86400
+        },
+        "allow_overruns": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "urn": {
+          "age": 0,
+          "type": "RDFURN",
+          "value": "aff4:/cron/CleanCronJobs"
+        },
+        "flow_runner_args": {
+          "age": 0,
+          "type": "FlowRunnerArgs",
+          "value": {
+            "flow_name": {
+              "age": 0,
+              "type": "unicode",
+              "value": "CleanCronJobs"
+            }
+          }
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "ENABLED"
+        },
+        "lifetime": {
+          "age": 0,
+          "type": "Duration",
+          "value": 86400
+        },
+        "flow_name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "CleanCronJobs"
+        },
+        "flow_args": {
+          "age": 0,
+          "type": "EmptyFlowArgs",
+          "value": {}
+        },
+        "last_run_time": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496423221627848
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiCronJob",
+      "value": {
+        "is_failing": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "description": {
+          "age": 0,
+          "type": "unicode",
+          "value": ""
+        },
+        "periodicity": {
+          "age": 0,
+          "type": "Duration",
+          "value": 86400
+        },
+        "allow_overruns": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "urn": {
+          "age": 0,
+          "type": "RDFURN",
+          "value": "aff4:/cron/CleanHunts"
+        },
+        "flow_runner_args": {
+          "age": 0,
+          "type": "FlowRunnerArgs",
+          "value": {
+            "flow_name": {
+              "age": 0,
+              "type": "unicode",
+              "value": "CleanHunts"
+            }
+          }
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "ENABLED"
+        },
+        "lifetime": {
+          "age": 0,
+          "type": "Duration",
+          "value": 86400
+        },
+        "flow_name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "CleanHunts"
+        },
+        "flow_args": {
+          "age": 0,
+          "type": "EmptyFlowArgs",
+          "value": {}
+        },
+        "last_run_time": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496423221621765
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiCronJob",
+      "value": {
+        "is_failing": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "description": {
+          "age": 0,
+          "type": "unicode",
+          "value": ""
+        },
+        "periodicity": {
+          "age": 0,
+          "type": "Duration",
+          "value": 86400
+        },
+        "allow_overruns": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "urn": {
+          "age": 0,
+          "type": "RDFURN",
+          "value": "aff4:/cron/CleanInactiveClients"
+        },
+        "flow_runner_args": {
+          "age": 0,
+          "type": "FlowRunnerArgs",
+          "value": {
+            "flow_name": {
+              "age": 0,
+              "type": "unicode",
+              "value": "CleanInactiveClients"
+            }
+          }
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "ENABLED"
+        },
+        "lifetime": {
+          "age": 0,
+          "type": "Duration",
+          "value": 86400
+        },
+        "flow_name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "CleanInactiveClients"
+        },
+        "flow_args": {
+          "age": 0,
+          "type": "EmptyFlowArgs",
+          "value": {}
+        },
+        "last_run_time": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496407194139521
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiCronJob",
+      "value": {
+        "is_failing": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "description": {
+          "age": 0,
+          "type": "unicode",
+          "value": ""
+        },
+        "periodicity": {
+          "age": 0,
+          "type": "Duration",
+          "value": 86400
+        },
+        "allow_overruns": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "urn": {
+          "age": 0,
+          "type": "RDFURN",
+          "value": "aff4:/cron/CleanTemp"
+        },
+        "flow_runner_args": {
+          "age": 0,
+          "type": "FlowRunnerArgs",
+          "value": {
+            "flow_name": {
+              "age": 0,
+              "type": "unicode",
+              "value": "CleanTemp"
+            }
+          }
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "ENABLED"
+        },
+        "lifetime": {
+          "age": 0,
+          "type": "Duration",
+          "value": 86400
+        },
+        "flow_name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "CleanTemp"
+        },
+        "flow_args": {
+          "age": 0,
+          "type": "EmptyFlowArgs",
+          "value": {}
+        },
+        "last_run_time": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496407194161726
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiCronJob",
+      "value": {
+        "is_failing": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "description": {
+          "age": 0,
+          "type": "unicode",
+          "value": ""
+        },
+        "periodicity": {
+          "age": 0,
+          "type": "Duration",
+          "value": 86400
+        },
+        "allow_overruns": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "urn": {
+          "age": 0,
+          "type": "RDFURN",
+          "value": "aff4:/cron/EndToEndTests"
+        },
+        "flow_runner_args": {
+          "age": 0,
+          "type": "FlowRunnerArgs",
+          "value": {
+            "flow_name": {
+              "age": 0,
+              "type": "unicode",
+              "value": "EndToEndTests"
+            }
+          }
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "ENABLED"
+        },
+        "lifetime": {
+          "age": 0,
+          "type": "Duration",
+          "value": 7200
+        },
+        "flow_name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "EndToEndTests"
+        },
+        "flow_args": {
+          "age": 0,
+          "type": "EmptyFlowArgs",
+          "value": {}
+        },
+        "last_run_time": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496407194202139
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiCronJob",
+      "value": {
+        "is_failing": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "description": {
+          "age": 0,
+          "type": "unicode",
+          "value": ""
+        },
+        "periodicity": {
+          "age": 0,
+          "type": "Duration",
+          "value": 604800
+        },
+        "allow_overruns": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "urn": {
+          "age": 0,
+          "type": "RDFURN",
+          "value": "aff4:/cron/FilestoreStatsCronFlow"
+        },
+        "flow_runner_args": {
+          "age": 0,
+          "type": "FlowRunnerArgs",
+          "value": {
+            "flow_name": {
+              "age": 0,
+              "type": "unicode",
+              "value": "FilestoreStatsCronFlow"
+            }
+          }
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "ENABLED"
+        },
+        "lifetime": {
+          "age": 0,
+          "type": "Duration",
+          "value": 86400
+        },
+        "flow_name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "FilestoreStatsCronFlow"
+        },
+        "flow_args": {
+          "age": 0,
+          "type": "EmptyFlowArgs",
+          "value": {}
+        },
+        "last_run_time": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496147131396302
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiCronJob",
+      "value": {
+        "is_failing": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "description": {
+          "age": 0,
+          "type": "unicode",
+          "value": ""
+        },
+        "periodicity": {
+          "age": 0,
+          "type": "Duration",
+          "value": 14400
+        },
+        "allow_overruns": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "urn": {
+          "age": 0,
+          "type": "RDFURN",
+          "value": "aff4:/cron/GRRVersionBreakDown"
+        },
+        "flow_runner_args": {
+          "age": 0,
+          "type": "FlowRunnerArgs",
+          "value": {
+            "flow_name": {
+              "age": 0,
+              "type": "unicode",
+              "value": "GRRVersionBreakDown"
+            }
+          }
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "ENABLED"
+        },
+        "lifetime": {
+          "age": 0,
+          "type": "Duration",
+          "value": 72000
+        },
+        "flow_name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "GRRVersionBreakDown"
+        },
+        "flow_args": {
+          "age": 0,
+          "type": "EmptyFlowArgs",
+          "value": {}
+        },
+        "last_run_time": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496478074066955
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiCronJob",
+      "value": {
+        "is_failing": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "description": {
+          "age": 0,
+          "type": "unicode",
+          "value": ""
+        },
+        "periodicity": {
+          "age": 0,
+          "type": "Duration",
+          "value": 604800
+        },
+        "allow_overruns": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "urn": {
+          "age": 0,
+          "type": "RDFURN",
+          "value": "aff4:/cron/InterrogateClientsCronFlow"
+        },
+        "flow_runner_args": {
+          "age": 0,
+          "type": "FlowRunnerArgs",
+          "value": {
+            "flow_name": {
+              "age": 0,
+              "type": "unicode",
+              "value": "InterrogateClientsCronFlow"
+            }
+          }
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "ENABLED"
+        },
+        "lifetime": {
+          "age": 0,
+          "type": "Duration",
+          "value": 1800
+        },
+        "flow_name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "InterrogateClientsCronFlow"
+        },
+        "flow_args": {
+          "age": 0,
+          "type": "EmptyFlowArgs",
+          "value": {}
+        },
+        "last_run_time": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496217819601095
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiCronJob",
+      "value": {
+        "is_failing": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "description": {
+          "age": 0,
+          "type": "unicode",
+          "value": ""
+        },
+        "periodicity": {
+          "age": 0,
+          "type": "Duration",
+          "value": 86400
+        },
+        "allow_overruns": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "urn": {
+          "age": 0,
+          "type": "RDFURN",
+          "value": "aff4:/cron/LastAccessStats"
+        },
+        "flow_runner_args": {
+          "age": 0,
+          "type": "FlowRunnerArgs",
+          "value": {
+            "flow_name": {
+              "age": 0,
+              "type": "unicode",
+              "value": "LastAccessStats"
+            }
+          }
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "ENABLED"
+        },
+        "lifetime": {
+          "age": 0,
+          "type": "Duration",
+          "value": 72000
+        },
+        "flow_name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "LastAccessStats"
+        },
+        "flow_args": {
+          "age": 0,
+          "type": "EmptyFlowArgs",
+          "value": {}
+        },
+        "last_run_time": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496407194208045
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiCronJob",
+      "value": {
+        "is_failing": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "description": {
+          "age": 0,
+          "type": "unicode",
+          "value": ""
+        },
+        "periodicity": {
+          "age": 0,
+          "type": "Duration",
+          "value": 86400
+        },
+        "allow_overruns": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "urn": {
+          "age": 0,
+          "type": "RDFURN",
+          "value": "aff4:/cron/OSBreakDown"
+        },
+        "flow_runner_args": {
+          "age": 0,
+          "type": "FlowRunnerArgs",
+          "value": {
+            "flow_name": {
+              "age": 0,
+              "type": "unicode",
+              "value": "OSBreakDown"
+            }
+          }
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "ENABLED"
+        },
+        "lifetime": {
+          "age": 0,
+          "type": "Duration",
+          "value": 72000
+        },
+        "flow_name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "OSBreakDown"
+        },
+        "flow_args": {
+          "age": 0,
+          "type": "EmptyFlowArgs",
+          "value": {}
+        },
+        "last_run_time": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496407194231028
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiCronJob",
+      "value": {
+        "is_failing": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "description": {
+          "age": 0,
+          "type": "unicode",
+          "value": ""
+        },
+        "periodicity": {
+          "age": 0,
+          "type": "Duration",
+          "value": 300
+        },
+        "allow_overruns": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "urn": {
+          "age": 0,
+          "type": "RDFURN",
+          "value": "aff4:/cron/PackedVersionedCollectionCompactor"
+        },
+        "flow_runner_args": {
+          "age": 0,
+          "type": "FlowRunnerArgs",
+          "value": {
+            "flow_name": {
+              "age": 0,
+              "type": "unicode",
+              "value": "PackedVersionedCollectionCompactor"
+            }
+          }
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "ENABLED"
+        },
+        "lifetime": {
+          "age": 0,
+          "type": "Duration",
+          "value": 2400
+        },
+        "flow_name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "PackedVersionedCollectionCompactor"
+        },
+        "flow_args": {
+          "age": 0,
+          "type": "EmptyFlowArgs",
+          "value": {}
+        },
+        "last_run_time": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496490678886100
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiCronJob",
+      "value": {
+        "is_failing": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "description": {
+          "age": 0,
+          "type": "unicode",
+          "value": ""
+        },
+        "periodicity": {
+          "age": 0,
+          "type": "Duration",
+          "value": 300
+        },
+        "allow_overruns": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": true
+        },
+        "urn": {
+          "age": 0,
+          "type": "RDFURN",
+          "value": "aff4:/cron/ProcessHuntResultCollectionsCronFlow"
+        },
+        "flow_runner_args": {
+          "age": 0,
+          "type": "FlowRunnerArgs",
+          "value": {
+            "flow_name": {
+              "age": 0,
+              "type": "unicode",
+              "value": "ProcessHuntResultCollectionsCronFlow"
+            }
+          }
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "ENABLED"
+        },
+        "lifetime": {
+          "age": 0,
+          "type": "Duration",
+          "value": 2400
+        },
+        "flow_name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "ProcessHuntResultCollectionsCronFlow"
+        },
+        "flow_args": {
+          "age": 0,
+          "type": "ProcessHuntResultCollectionsCronFlowArgs",
+          "value": {}
+        },
+        "last_run_time": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496490678906035
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiCronJob",
+      "value": {
+        "is_failing": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "description": {
+          "age": 0,
+          "type": "unicode",
+          "value": ""
+        },
+        "periodicity": {
+          "age": 0,
+          "type": "Duration",
+          "value": 604800
+        },
+        "allow_overruns": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "urn": {
+          "age": 0,
+          "type": "RDFURN",
+          "value": "aff4:/cron/PurgeClientStats"
+        },
+        "flow_runner_args": {
+          "age": 0,
+          "type": "FlowRunnerArgs",
+          "value": {
+            "flow_name": {
+              "age": 0,
+              "type": "unicode",
+              "value": "PurgeClientStats"
+            }
+          }
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "ENABLED"
+        },
+        "lifetime": {
+          "age": 0,
+          "type": "Duration",
+          "value": 72000
+        },
+        "flow_name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "PurgeClientStats"
+        },
+        "flow_args": {
+          "age": 0,
+          "type": "EmptyFlowArgs",
+          "value": {}
+        },
+        "last_run_time": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496147131610510
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiCronJob",
+      "value": {
+        "is_failing": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "description": {
+          "age": 0,
+          "type": "unicode",
+          "value": ""
+        },
+        "periodicity": {
+          "age": 0,
+          "type": "Duration",
+          "value": 86400
+        },
+        "allow_overruns": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "urn": {
+          "age": 0,
+          "type": "RDFURN",
+          "value": "aff4:/cron/StatsHuntCronFlow"
+        },
+        "flow_runner_args": {
+          "age": 0,
+          "type": "FlowRunnerArgs",
+          "value": {
+            "flow_name": {
+              "age": 0,
+              "type": "unicode",
+              "value": "StatsHuntCronFlow"
+            }
+          }
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "DISABLED"
+        },
+        "lifetime": {
+          "age": 0,
+          "type": "Duration",
+          "value": 1800
+        },
+        "flow_name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "StatsHuntCronFlow"
+        },
+        "flow_args": {
+          "age": 0,
+          "type": "EmptyFlowArgs",
+          "value": {}
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiCronJob",
+      "value": {
+        "is_failing": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "description": {
+          "age": 0,
+          "type": "unicode",
+          "value": ""
+        },
+        "periodicity": {
+          "age": 0,
+          "type": "Duration",
+          "value": 14400
+        },
+        "allow_overruns": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": false
+        },
+        "urn": {
+          "age": 0,
+          "type": "RDFURN",
+          "value": "aff4:/cron/VerifyHuntOutputPluginsCronFlow"
+        },
+        "flow_runner_args": {
+          "age": 0,
+          "type": "FlowRunnerArgs",
+          "value": {
+            "flow_name": {
+              "age": 0,
+              "type": "unicode",
+              "value": "VerifyHuntOutputPluginsCronFlow"
+            }
+          }
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "ENABLED"
+        },
+        "lifetime": {
+          "age": 0,
+          "type": "Duration",
+          "value": 14400
+        },
+        "flow_name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "VerifyHuntOutputPluginsCronFlow"
+        },
+        "flow_args": {
+          "age": 0,
+          "type": "VerifyHuntOutputPluginsCronFlowArgs",
+          "value": {}
+        },
+        "last_run_time": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496478077840237
+        }
+      }
+    }
+  ],
+  "total_count": 15
+}
+------------------------------------------------------------------------
+{
+  "items": [
+    {
+      "is_failing": false,
+      "description": "",
+      "periodicity": 86400,
+      "allow_overruns": false,
+      "urn": "aff4:/cron/CleanCronJobs",
+      "flow_runner_args": {
+        "flow_name": "CleanCronJobs"
+      },
+      "state": "ENABLED",
+      "lifetime": 86400,
+      "flow_name": "CleanCronJobs",
+      "flow_args": {},
+      "last_run_time": 1496423221627848
+    },
+    {
+      "is_failing": false,
+      "description": "",
+      "periodicity": 86400,
+      "allow_overruns": false,
+      "urn": "aff4:/cron/CleanHunts",
+      "flow_runner_args": {
+        "flow_name": "CleanHunts"
+      },
+      "state": "ENABLED",
+      "lifetime": 86400,
+      "flow_name": "CleanHunts",
+      "flow_args": {},
+      "last_run_time": 1496423221621765
+    },
+    {
+      "is_failing": false,
+      "description": "",
+      "periodicity": 86400,
+      "allow_overruns": false,
+      "urn": "aff4:/cron/CleanInactiveClients",
+      "flow_runner_args": {
+        "flow_name": "CleanInactiveClients"
+      },
+      "state": "ENABLED",
+      "lifetime": 86400,
+      "flow_name": "CleanInactiveClients",
+      "flow_args": {},
+      "last_run_time": 1496407194139521
+    },
+    {
+      "is_failing": false,
+      "description": "",
+      "periodicity": 86400,
+      "allow_overruns": false,
+      "urn": "aff4:/cron/CleanTemp",
+      "flow_runner_args": {
+        "flow_name": "CleanTemp"
+      },
+      "state": "ENABLED",
+      "lifetime": 86400,
+      "flow_name": "CleanTemp",
+      "flow_args": {},
+      "last_run_time": 1496407194161726
+    },
+    {
+      "is_failing": false,
+      "description": "",
+      "periodicity": 86400,
+      "allow_overruns": false,
+      "urn": "aff4:/cron/EndToEndTests",
+      "flow_runner_args": {
+        "flow_name": "EndToEndTests"
+      },
+      "state": "ENABLED",
+      "lifetime": 7200,
+      "flow_name": "EndToEndTests",
+      "flow_args": {},
+      "last_run_time": 1496407194202139
+    },
+    {
+      "is_failing": false,
+      "description": "",
+      "periodicity": 604800,
+      "allow_overruns": false,
+      "urn": "aff4:/cron/FilestoreStatsCronFlow",
+      "flow_runner_args": {
+        "flow_name": "FilestoreStatsCronFlow"
+      },
+      "state": "ENABLED",
+      "lifetime": 86400,
+      "flow_name": "FilestoreStatsCronFlow",
+      "flow_args": {},
+      "last_run_time": 1496147131396302
+    },
+    {
+      "is_failing": false,
+      "description": "",
+      "periodicity": 14400,
+      "allow_overruns": false,
+      "urn": "aff4:/cron/GRRVersionBreakDown",
+      "flow_runner_args": {
+        "flow_name": "GRRVersionBreakDown"
+      },
+      "state": "ENABLED",
+      "lifetime": 72000,
+      "flow_name": "GRRVersionBreakDown",
+      "flow_args": {},
+      "last_run_time": 1496478074066955
+    },
+    {
+      "is_failing": false,
+      "description": "",
+      "periodicity": 604800,
+      "allow_overruns": false,
+      "urn": "aff4:/cron/InterrogateClientsCronFlow",
+      "flow_runner_args": {
+        "flow_name": "InterrogateClientsCronFlow"
+      },
+      "state": "ENABLED",
+      "lifetime": 1800,
+      "flow_name": "InterrogateClientsCronFlow",
+      "flow_args": {},
+      "last_run_time": 1496217819601095
+    },
+    {
+      "is_failing": false,
+      "description": "",
+      "periodicity": 86400,
+      "allow_overruns": false,
+      "urn": "aff4:/cron/LastAccessStats",
+      "flow_runner_args": {
+        "flow_name": "LastAccessStats"
+      },
+      "state": "ENABLED",
+      "lifetime": 72000,
+      "flow_name": "LastAccessStats",
+      "flow_args": {},
+      "last_run_time": 1496407194208045
+    },
+    {
+      "is_failing": false,
+      "description": "",
+      "periodicity": 86400,
+      "allow_overruns": false,
+      "urn": "aff4:/cron/OSBreakDown",
+      "flow_runner_args": {
+        "flow_name": "OSBreakDown"
+      },
+      "state": "ENABLED",
+      "lifetime": 72000,
+      "flow_name": "OSBreakDown",
+      "flow_args": {},
+      "last_run_time": 1496407194231028
+    },
+    {
+      "is_failing": false,
+      "description": "",
+      "periodicity": 300,
+      "allow_overruns": false,
+      "urn": "aff4:/cron/PackedVersionedCollectionCompactor",
+      "flow_runner_args": {
+        "flow_name": "PackedVersionedCollectionCompactor"
+      },
+      "state": "ENABLED",
+      "lifetime": 2400,
+      "flow_name": "PackedVersionedCollectionCompactor",
+      "flow_args": {},
+      "last_run_time": 1496490678886100
+    },
+    {
+      "is_failing": false,
+      "description": "",
+      "periodicity": 300,
+      "allow_overruns": true,
+      "urn": "aff4:/cron/ProcessHuntResultCollectionsCronFlow",
+      "flow_runner_args": {
+        "flow_name": "ProcessHuntResultCollectionsCronFlow"
+      },
+      "state": "ENABLED",
+      "lifetime": 2400,
+      "flow_name": "ProcessHuntResultCollectionsCronFlow",
+      "flow_args": {},
+      "last_run_time": 1496490678906035
+    },
+    {
+      "is_failing": false,
+      "description": "",
+      "periodicity": 604800,
+      "allow_overruns": false,
+      "urn": "aff4:/cron/PurgeClientStats",
+      "flow_runner_args": {
+        "flow_name": "PurgeClientStats"
+      },
+      "state": "ENABLED",
+      "lifetime": 72000,
+      "flow_name": "PurgeClientStats",
+      "flow_args": {},
+      "last_run_time": 1496147131610510
+    },
+    {
+      "is_failing": false,
+      "description": "",
+      "periodicity": 86400,
+      "allow_overruns": false,
+      "urn": "aff4:/cron/StatsHuntCronFlow",
+      "flow_runner_args": {
+        "flow_name": "StatsHuntCronFlow"
+      },
+      "state": "DISABLED",
+      "lifetime": 1800,
+      "flow_name": "StatsHuntCronFlow",
+      "flow_args": {}
+    },
+    {
+      "is_failing": false,
+      "description": "",
+      "periodicity": 14400,
+      "allow_overruns": false,
+      "urn": "aff4:/cron/VerifyHuntOutputPluginsCronFlow",
+      "flow_runner_args": {
+        "flow_name": "VerifyHuntOutputPluginsCronFlow"
+      },
+      "state": "ENABLED",
+      "lifetime": 14400,
+      "flow_name": "VerifyHuntOutputPluginsCronFlow",
+      "flow_args": {},
+      "last_run_time": 1496478077840237
+    }
+  ],
+  "total_count": 15
+}
+========================================================================
+http://10.28.47.155:8000/api/hunts
+{
+  "items": [
+    {
+      "age": 0,
+      "type": "ApiHunt",
+      "value": {
+        "name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "GenericHunt"
+        },
+        "created": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496236132902094
+        },
+        "urn": {
+          "age": 0,
+          "type": "SessionID",
+          "value": "aff4:/hunts/H:B608C108"
+        },
+        "expires": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1497538283000000
+        },
+        "total_net_usage": {
+          "age": 0,
+          "type": "long",
+          "value": 0
+        },
+        "client_limit": {
+          "age": 0,
+          "type": "long",
+          "value": 100
+    {
+      "age": 0,
+      "type": "ApiHunt",
+      "value": {
+        "name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "GenericHunt"
+        },
+        "created": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496217819756944
+        },
+        "urn": {
+          "age": 0,
+          "type": "SessionID",
+          "value": "aff4:/hunts/H:5F7DE260"
+        },
+        "expires": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496840827000000
+        },
+        "total_net_usage": {
+          "age": 0,
+          "type": "long",
+          "value": 0
+        },
+        "client_limit": {
+          "age": 0,
+          "type": "long",
+          "value": 0
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "STARTED"
+        },
+        "is_robot": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": true
+        },
+        "creator": {
+          "age": 0,
+          "type": "unicode",
+          "value": "GRRWorker"
+        },
+        "client_rate": {
+          "age": 0,
+          "type": "float",
+          "value": 50
+        },
+        "total_cpu_usage": {
+          "age": 0,
+          "type": "long",
+          "value": 0
+        },
+        "description": {
+          "age": 0,
+          "type": "unicode",
+          "value": "Interrogate run by cron to keep hostinfo fresh."
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiHunt",
+      "value": {
+        "name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "GenericHunt"
+        },
+        "created": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496147131804656
+        },
+        "urn": {
+          "age": 0,
+          "type": "SessionID",
+          "value": "aff4:/hunts/H:79000CEB"
+        },
+        "expires": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496751932000000
+        },
+        "total_net_usage": {
+          "age": 0,
+          "type": "long",
+          "value": 0
+        },
+        "client_limit": {
+          "age": 0,
+          "type": "long",
+          "value": 0
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "STARTED"
+        },
+        "is_robot": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": true
+        },
+        "creator": {
+          "age": 0,
+          "type": "unicode",
+          "value": "GRRWorker"
+        },
+        "client_rate": {
+          "age": 0,
+          "type": "float",
+          "value": 50
+        },
+        "total_cpu_usage": {
+          "age": 0,
+          "type": "long",
+          "value": 0
+        },
+        "description": {
+          "age": 0,
+          "type": "unicode",
+          "value": "Interrogate run by cron to keep hostinfo fresh."
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiHunt",
+      "value": {
+        "name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "GenericHunt"
+        },
+        "created": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1495542149653774
+        },
+        "urn": {
+          "age": 0,
+          "type": "SessionID",
+          "value": "aff4:/hunts/H:7F1D7469"
+        },
+        "expires": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1496146951000000
+        },
+        "total_net_usage": {
+          "age": 0,
+          "type": "long",
+          "value": 9819
+        },
+        "client_limit": {
+          "age": 0,
+          "type": "long",
+          "value": 0
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "STARTED"
+        },
+        "is_robot": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": true
+        },
+        "creator": {
+          "age": 0,
+          "type": "unicode",
+          "value": "GRRWorker"
+        },
+        "client_rate": {
+          "age": 0,
+          "type": "float",
+          "value": 50
+        },
+        "total_cpu_usage": {
+          "age": 0,
+          "type": "float",
+          "value": 0.019999999552965164
+        },
+        "description": {
+          "age": 0,
+          "type": "unicode",
+          "value": "Interrogate run by cron to keep hostinfo fresh."
+        }
+      }
+    },
+    {
+      "age": 0,
+      "type": "ApiHunt",
+      "value": {
+        "name": {
+          "age": 0,
+          "type": "unicode",
+          "value": "GenericHunt"
+        },
+        "created": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1494281044087806
+        },
+        "urn": {
+          "age": 0,
+          "type": "SessionID",
+          "value": "aff4:/hunts/H:76FE049C"
+        },
+        "expires": {
+          "age": 0,
+          "type": "RDFDatetime",
+          "value": 1494885844000000
+        },
+        "total_net_usage": {
+          "age": 0,
+          "type": "long",
+          "value": 0
+        },
+        "client_limit": {
+          "age": 0,
+          "type": "long",
+          "value": 0
+        },
+        "state": {
+          "age": 0,
+          "type": "EnumNamedValue",
+          "value": "COMPLETED"
+        },
+        "is_robot": {
+          "age": 0,
+          "type": "RDFBool",
+          "value": true
+        },
+        "creator": {
+          "age": 0,
+          "type": "unicode",
+          "value": "GRRWorker"
+        },
+        "client_rate": {
+          "age": 0,
+          "type": "float",
+          "value": 50
+        },
+        "total_cpu_usage": {
+          "age": 0,
+          "type": "long",
+          "value": 0
+        },
+        "description": {
+          "age": 0,
+          "type": "unicode",
+          "value": "Interrogate run by cron to keep hostinfo fresh."
+        }
+      }
+    }
+  ],
+  "total_count": 5
+}
+------------------------------------------------------------------------
+{
+  "items": [
+    {
+      "name": "GenericHunt",
+      "created": 1496217819756944,
+      "urn": "aff4:/hunts/H:5F7DE260",
+      "expires": 1496840827000000,
+      "total_net_usage": 0,
+      "is_robot": true,
+      "state": "STARTED",
+      "client_rate": 50,
+      "creator": "GRRWorker",
+      "client_limit": 0,
+      "total_cpu_usage": 0,
+      "description": "Interrogate run by cron to keep hostinfo fresh."
+    },
+    {
+      "name": "GenericHunt",
+      "created": 1496147131804656,
+      "urn": "aff4:/hunts/H:79000CEB",
+      "expires": 1496751932000000,
+      "total_net_usage": 0,
+      "is_robot": true,
+      "state": "STARTED",
+      "client_rate": 50,
+      "creator": "GRRWorker",
+      "client_limit": 0,
+      "total_cpu_usage": 0,
+      "description": "Interrogate run by cron to keep hostinfo fresh."
+    },
+    {
+      "name": "GenericHunt",
+      "created": 1495542149653774,
+      "urn": "aff4:/hunts/H:7F1D7469",
+      "expires": 1496146951000000,
+      "total_net_usage": 9819,
+      "is_robot": true,
+      "state": "STARTED",
+      "client_rate": 50,
+      "creator": "GRRWorker",
+      "client_limit": 0,
+      "total_cpu_usage": 0.019999999552965164,
+      "description": "Interrogate run by cron to keep hostinfo fresh."
+    },
+    {
+      "name": "GenericHunt",
+      "created": 1494281044087806,
+      "urn": "aff4:/hunts/H:76FE049C",
+      "expires": 1494885844000000,
+      "total_net_usage": 0,
+      "is_robot": true,
+      "state": "COMPLETED",
+      "client_rate": 50,
+      "creator": "GRRWorker",
+      "client_limit": 0,
+      "total_cpu_usage": 0,
+      "description": "Interrogate run by cron to keep hostinfo fresh."
+    }
+  ],
+  "total_count": 5
+}
+========================================================================
+http://10.28.47.155:8000/api/hunts/H:7F1D7469
+{
+  "client_rule_set": {
+    "age": 0,
+    "type": "ForemanClientRuleSet",
+    "value": {}
+  },
+  "name": "GenericHunt",
+  "created": 1495542149653774,
+  "hunt_args": {
+    "age": 0,
+    "type": "GenericHuntArgs",
+    "value": {
+      "flow_runner_args": {
+        "age": 0,
+        "type": "FlowRunnerArgs",
+        "value": {
+          "base_session_id": {
+            "age": 0,
+            "type": "RDFURN",
+            "value": "aff4:/hunts/H:7F1D7469/C.88ad292d66293c97"
+          },
+          "logs_collection_urn": {
+            "age": 0,
+            "type": "RDFURN",
+            "value": "aff4:/hunts/H:7F1D7469/Logs"
+          },
+          "write_intermediate_results": {
+            "age": 0,
+            "type": "RDFBool",
+            "value": false
+          },
+          "creator": {
+            "age": 0,
+            "type": "unicode",
+            "value": "GRRWorker"
+          },
+          "queue": {
+            "age": 0,
+            "type": "RDFURN",
+            "value": "aff4:/H"
+          },
+          "token": {
+            "age": 0,
+            "type": "ACLToken",
+            "value": {
+              "username": {
+                "age": 0,
+                "type": "unicode",
+                "value": "GRRWorker"
+              }
+            }
+          },
+          "client_id": {
+            "age": 0,
+            "type": "ClientURN",
+            "value": "aff4:/C.88ad292d66293c97"
+          },
+          "notify_to_user": {
+            "age": 0,
+            "type": "RDFBool",
+            "value": false
+          },
+          "request_state": {
+            "age": 0,
+            "type": "RequestState",
+            "value": {
+              "session_id": {
+                "age": 0,
+                "type": "SessionID",
+                "value": "aff4:/hunts/H:7F1D7469"
+              },
+              "response_count": {
+                "age": 0,
+                "type": "long",
+                "value": 0
+              },
+              "id": {
+                "age": 0,
+                "type": "long",
+                "value": 1
+              },
+              "client_id": {
+                "age": 0,
+                "type": "ClientURN",
+                "value": "aff4:/C.88ad292d66293c97"
+              },
+              "next_state": {
+                "age": 0,
+                "type": "unicode",
+                "value": "MarkDone"
+              }
+            }
+          },
+          "flow_name": {
+            "age": 0,
+            "type": "unicode",
+            "value": "Interrogate"
+          }
+        }
+      },
+      "flow_args": {
+        "age": 0,
+        "type": "InterrogateArgs",
+        "value": {
+          "lightweight": {
+            "age": 0,
+            "type": "RDFBool",
+            "value": false
+          }
+        }
+      }
+    }
+  },
+  "urn": "aff4:/hunts/H:7F1D7469",
+  "expires": 1496146951000000,
+  "total_net_usage": 9819,
+  "remaining_clients_count": 0,
+  "client_rate": 50,
+  "state": "STARTED",
+  "is_robot": true,
+  "all_clients_count": 1,
+  "creator": "GRRWorker",
+  "completed_clients_count": 1,
+  "hunt_runner_args": {
+    "age": 0,
+    "type": "HuntRunnerArgs",
+    "value": {
+      "expiry_time": {
+        "age": 0,
+        "type": "Duration",
+        "value": 604800
+      },
+      "description": {
+        "age": 0,
+        "type": "unicode",
+        "value": "Interrogate run by cron to keep hostinfo fresh."
+      },
+      "hunt_name": {
+        "age": 0,
+        "type": "unicode",
+        "value": "GenericHunt"
+      },
+      "client_rate": {
+        "age": 0,
+        "type": "float",
+        "value": 50
+      },
+      "token": {
+        "age": 0,
+        "type": "ACLToken",
+        "value": {
+          "username": {
+            "age": 0,
+            "type": "unicode",
+            "value": "GRRWorker"
+          }
+        }
+      },
+      "client_rule_set": {
+        "age": 0,
+        "type": "ForemanClientRuleSet",
+        "value": {}
+      },
+      "client_limit": {
+        "age": 0,
+        "type": "long",
+        "value": 0
+      }
+    }
+  },
+  "client_limit": 0,
+  "total_cpu_usage": 0.019999999552965164,
+  "description": "Interrogate run by cron to keep hostinfo fresh."
+}
+------------------------------------------------------------------------
+{
+  "hunt_runner_args": {
+    "client_rule_set": {},
+    "description": "Interrogate run by cron to keep hostinfo fresh.",
+    "hunt_name": "GenericHunt",
+    "client_limit": 0,
+    "token": {
+      "username": "GRRWorker"
+    },
+    "expiry_time": 604800,
+    "client_rate": 50
+  },
+  "client_rule_set": {},
+  "name": "GenericHunt",
+  "created": 1495542149653774,
+  "completed_clients_count": 1,
+  "urn": "aff4:/hunts/H:7F1D7469",
+  "expires": 1496146951000000,
+  "total_net_usage": 9819,
+  "remaining_clients_count": 0,
+  "is_robot": true,
+  "state": "STARTED",
+  "all_clients_count": 1,
+  "creator": "GRRWorker",
+  "client_limit": 0,
+  "hunt_args": {
+    "flow_runner_args": {
+      "base_session_id": "aff4:/hunts/H:7F1D7469/C.88ad292d66293c97",
+      "flow_name": "Interrogate",
+      "write_intermediate_results": false,
+      "creator": "GRRWorker",
+      "queue": "aff4:/H",
+      "token": {
+        "username": "GRRWorker"
+      },
+      "client_id": "aff4:/C.88ad292d66293c97",
+      "notify_to_user": false,
+      "request_state": {
+        "response_count": 0,
+        "client_id": "aff4:/C.88ad292d66293c97",
+        "id": 1,
+        "session_id": "aff4:/hunts/H:7F1D7469",
+        "next_state": "MarkDone"
+      },
+      "logs_collection_urn": "aff4:/hunts/H:7F1D7469/Logs"
+    },
+    "flow_args": {
+      "lightweight": false
+    }
+  },
+  "client_rate": 50,
+  "total_cpu_usage": 0.019999999552965164,
+  "description": "Interrogate run by cron to keep hostinfo fresh."
+}
