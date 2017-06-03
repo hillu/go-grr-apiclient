@@ -63,6 +63,8 @@ func (c *APIClient) getCSRFToken() string {
 // if the GRR server returns a JSON document.
 func (c *APIClient) DoRequest(rq *http.Request) (*http.Response, error) {
 	rq.Header.Set("x-csrftoken", c.getCSRFToken())
+	pass, _ := c.BaseURL.User.Password()
+	rq.SetBasicAuth(c.BaseURL.User.Username(), pass)
 	rs, err := c.client().Do(rq)
 	if err != nil {
 		return nil, err
