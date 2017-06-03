@@ -9,13 +9,17 @@ import (
 	"text/template"
 )
 
-func snake2camel(name string) (result string) {
+// turn snake_case into CamelCase, ...
+func normalizeName(name string, capitalize bool) (result string) {
 	for i, f := range strings.Split(name, "_") {
-		if i == 0 {
+		if i == 0 && !capitalize {
 			result = result + f
 		} else {
 			result = result + strings.Title(f)
 		}
+	}
+	if result == "type" {
+		result = "typ"
 	}
 	return
 }
@@ -31,8 +35,7 @@ func getParams(path string) (params []param) {
 			// get rid of prefix:
 			name := f[2][1 : len(f[2])-1]
 			n := strings.Split(name, ":")
-			name = n[len(n)-1]
-			p.Name = snake2camel(name)
+			p.Name = n[len(n)-1]
 		}
 		params = append(params, p)
 	}
@@ -41,7 +44,7 @@ func getParams(path string) (params []param) {
 
 var (
 	requesttemplate = template.Must(template.New("").
-			Funcs(template.FuncMap{"title": strings.Title}).
+			Funcs(template.FuncMap{"normalize": normalizeName}).
 			Parse(`
 {{- $arg := or .Arg ( print "Api" .Name "Args" ) -}}
 {{- $result := or .Result ( print "Api" .Name "Result" ) -}}
@@ -50,7 +53,7 @@ func (c *APIClient) {{ .Name -}} (rq {{ $arg -}} ) (rs *{{ $result }}, err error
 	if err := c.do("{{ .Method }}", {{ range $index, $var := .Params -}}
 {{- if $index -}}+{{- end -}}
 "{{- $var.Prefix -}}"
-{{- with $var.Name }}+path.Base(rq.Get{{ title . }}()){{ end -}}
+{{- with $var.Name }}+path.Base(rq.Get{{ normalize . true }}()){{ end -}}
 {{- end -}}
 
 , &rq, rs); err != nil {
@@ -60,13 +63,15 @@ func (c *APIClient) {{ .Name -}} (rq {{ $arg -}} ) (rs *{{ $result }}, err error
 }
 `,
 		))
-	gettemplate = template.Must(template.New("").Parse(`
+	gettemplate = template.Must(template.New("").
+			Funcs(template.FuncMap{"normalize": normalizeName}).
+			Parse(`
 {{- $result := or .Result ( print "Api" .Name "Result" ) -}}
 func (c *APIClient) {{ .ApiCall.Name -}} (
 
 {{- range $index, $var := .Params -}}
 {{- if and $index $var.Name }}, {{ end -}}
-{{- with $var.Name }} {{- .}} string {{- end -}}
+{{- with $var.Name }} {{- normalize . false }} string {{- end -}}
 {{- end -}}
 
 ) (rs *{{ $result }}, err error) {
@@ -76,7 +81,7 @@ func (c *APIClient) {{ .ApiCall.Name -}} (
 {{- range $index, $var := .Params -}}
 {{- if $index -}}+{{- end -}}
 "{{- $var.Prefix -}}"
-{{- with $var.Name }}+{{ . }}{{ end -}}
+{{- with $var.Name }}+{{ normalize . false }}{{ end -}}
 {{- end -}}
 
 , nil, rs); err != nil {
@@ -85,13 +90,15 @@ func (c *APIClient) {{ .ApiCall.Name -}} (
 	return
 }
 `,
-	))
-	posttemplate = template.Must(template.New("").Parse(`
+		))
+	posttemplate = template.Must(template.New("").
+			Funcs(template.FuncMap{"normalize": normalizeName}).
+			Parse(`
 {{- $arg := or .Arg ( print "Api" .Name "Args" ) -}}
 func (c *APIClient) {{ .ApiCall.Name -}} (rq {{ $arg }}
 
 {{- range $index, $var := .Params -}}
-{{- with $var.Name }}, {{ . }} string {{- end -}}
+{{- with $var.Name }}, {{ normalize . false }} string {{- end -}}
 {{- end -}}
 
 ) error {
@@ -100,13 +107,13 @@ func (c *APIClient) {{ .ApiCall.Name -}} (rq {{ $arg }}
 {{- range $index, $var := .Params -}}
 {{- if $index }}+{{ end -}}
 "{{- $var.Prefix -}}"
-{{- with $var.Name }}+{{ . }}{{ end -}}
+{{- with $var.Name }}+{{ normalize . false }}{{ end -}}
 {{- end -}}
 
 , &rq)
 }
 `,
-	))
+		))
 )
 
 type method int
@@ -223,7 +230,7 @@ var apicalls = []ApiCall{
 	// User settings methods.
 	{Name: "GetPendingUserNotificationsCount", Method: "GET-simple", Path: "/api/users/me/notifications/pending/count"},
 	{Name: "ListPendingUserNotifications", Method: "GET", Path: "/api/users/me/notifications/pending"},
-	// FIXME
+	// FIXME: DELETE-simple?
 	// {Name: "DeletePendingUserNotification", Method: "Delete", Path: "/api/users/me/notifications/pending/<timestamp>"},
 	{Name: "ListAndResetUserNotifications", Method: "POST", Path: "/api/users/me/notifications"},
 	{Name: "GetGrrUser", Method: "GET-simple", Path: "/api/users/me", Result: "ApiGrrUser"},
@@ -239,13 +246,13 @@ var apicalls = []ApiCall{
 	// Reflection methods.
 	{Name: "ListKbFields", Method: "GET-simple", Path: "/api/clients/kb-fields"},
 	{Name: "ListFlowDescriptors", Method: "GET", Path: "/api/flows/descriptors"},
-	// FIXME: unknown type
+	// FIXME: unknown types
 	// {Name: "ListAff4AttributeDescriptors", Method: "GET", Path: "/api/reflection/aff4/attributes"},
-	// FIXME: type is a reserved word, Type is not.
+	// FIXME: unknown return type
 	// {Name: "GetRDFValueDescriptor", Method: "GET-simple", Path: "/api/reflection/rdfvalue/<type>"},
-	// FIXME: unknown type
+	// FIXME: unknown types
 	// {Name: "ListRDFValuesDescriptors", Method: "GET-simple", Path: "/api/reflection/rdfvalue/all"},
-	// FIXME: unknown type
+	// FIXME: unknown types
 	// {Name: "ListOutputPluginDescriptors", Method: "GET-simple", Path: "/api/output-plugins/all"},
 	{Name: "ListKnownEncodings", Method: "GET-simple", Path: "/api/reflection/file-encodings"},
 
