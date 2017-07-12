@@ -3,6 +3,7 @@ package apiclient
 import (
 	"github.com/golang/protobuf/proto"
 
+	"encoding/json"
 	"fmt"
 	"reflect"
 )
@@ -33,4 +34,14 @@ func (av *AnyValue) ToProtoMessage() (pb proto.Message, err error) {
 		return nil, err
 	}
 	return
+}
+
+// MarshalJSON implements a JSON marshaller that marshals the value
+// stored in av.Value.
+func (av *AnyValue) MarshalJSON() ([]byte, error) {
+	pb, err := av.ToProtoMessage()
+	if err != nil {
+		return nil, err
+	}
+	return json.Marshal(pb)
 }
