@@ -8,8 +8,9 @@ import (
 	"reflect"
 )
 
-// ToAnyValue stores a proto.Message in an AnyValue
-func ToAnyValue(pb proto.Message) (av *AnyValue, err error) {
+// NewAnyValue creates and returns a new AnyValue in which the type
+// information and the serialized form of a proto.Message are stored.
+func NewAnyValue(pb proto.Message) (av *AnyValue, err error) {
 	var value []byte
 	typ := proto.MessageName(pb)
 	value, err = proto.Marshal(pb)
@@ -23,8 +24,9 @@ func ToAnyValue(pb proto.Message) (av *AnyValue, err error) {
 	return
 }
 
-// ToProtoMessage returnes the stored proto.Message
-func (av *AnyValue) ToProtoMessage() (pb proto.Message, err error) {
+// GetProtoMessage deserializes and returns the proto.Message stored
+// in the AnyValue
+func (av *AnyValue) GetProtoMessage() (pb proto.Message, err error) {
 	typ := proto.MessageType(av.GetTypeUrl())
 	if typ == nil {
 		return nil, fmt.Errorf("%s has not been registered with Protobuf library", av.TypeUrl)
