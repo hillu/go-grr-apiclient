@@ -7,16 +7,16 @@ import (
 
 func TestAnyValue(t *testing.T) {
 	var duration uint64 = 1800
-	av, err := ToAnyValue(&KeepAliveArgs{Duration: &duration})
+	av, err := NewAnyValue(&KeepAliveArgs{Duration: &duration})
 	if err != nil {
-		t.Errorf("ToAnyValue: %s", err)
+		t.Errorf("NewAnyValue: %s", err)
 	}
 	t.Log("TypeURL: ", *av.TypeUrl)
 	t.Log("Value:   ", hex.EncodeToString(av.Value))
 
-	pb, err := av.ToProtoMessage()
+	pb, err := av.GetProtoMessage()
 	if err != nil {
-		t.Errorf("ToProtoMessage: %s", err)
+		t.Errorf("GetProtoMessage: %s", err)
 	}
 	t.Logf("Type of Regenerated value: %t", pb)
 	v, ok := pb.(*KeepAliveArgs)
