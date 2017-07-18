@@ -41,7 +41,7 @@ func (av *AnyValue) GetProtoMessage() (pb proto.Message, err error) {
 // MarshalJSON implements a JSON marshaller that marshals the value
 // stored in av.Value.
 func (av *AnyValue) MarshalJSON() ([]byte, error) {
-	pb, err := av.ToProtoMessage()
+	pb, err := av.GetProtoMessage()
 	if err != nil {
 		return nil, err
 	}
