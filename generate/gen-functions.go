@@ -36,7 +36,10 @@ func normalizeName(name string, capitalize bool) (result string) {
 
 var paramRegexp = regexp.MustCompile(`(/[a-z-/]+/?)((?:<.*?>)?)`)
 
-type param struct{ Prefix, Name string }
+type param struct {
+	Prefix, Name string
+	Stringer     bool
+}
 type urlvalue struct{ Name, OrigName, Kind string }
 
 func getParams(path, typ string) (pathparams []param, urlvalues []urlvalue) {
@@ -49,6 +52,13 @@ func getParams(path, typ string) (pathparams []param, urlvalues []urlvalue) {
 			// strip foo: prefix
 			n := strings.Split(name, ":")
 			p.Name = n[len(n)-1]
+			if typ != "" {
+				t := proto.MessageType(typ).Elem()
+				sf, _ := t.FieldByName(normalizeName(p.Name, true))
+				if _, ok := sf.Type.MethodByName("String"); ok {
+					p.Stringer = true
+				}
+			}
 			inline[p.Name] = true
 		}
 		pathparams = append(pathparams, p)
@@ -92,9 +102,15 @@ func (c *APIClient) {{ .Name -}} (rq {{ .Arg -}} ) (rs *{{ .Result }}, err error
 	if err := c.get(
 {{- end }}
 {{- range $index, $var := .Params -}}
-{{- if $index -}}+{{- end -}}
+{{-   if $index -}}+{{- end -}}
 "{{- $var.Prefix -}}"
-{{- with $var.Name }}+path.Base(rq.Get{{ normalize . true }}()){{ end -}}
+{{-   with $var.Name -}}
+{{-     if $var.Stringer -}}
++strings.ToLower(path.Base(rq.Get{{ normalize . true }}().String()))
+{{-     else -}}
++path.Base(rq.Get{{ normalize . true }}())
+{{-     end -}}
+{{-   end -}}
 {{- end -}}
 
 {{- if eq .Method "POST" -}}
@@ -251,8 +267,7 @@ var apicalls = []ApiCall{
 	{Name: "ListHuntCrashes", Method: "GET", Path: "/api/hunts/<hunt_id>/crashes"},
 	{Name: "GetHuntClientCompletionStats", Method: "GET", Path: "/api/hunts/<hunt_id>/client-completion-stats"},
 	{Name: "GetHuntStats", Method: "GET", Path: "/api/hunts/<hunt_id>/stats"},
-	// FIXME: ApiListHuntClientsArgs.ClientStatus is not a string
-	// {Name: "ListHuntClients", Method: "GET", Path: "/api/hunts/<hunt_id>/clients/<client_status>"},
+	{Name: "ListHuntClients", Method: "GET", Path: "/api/hunts/<hunt_id>/clients/<client_status>"},
 	{Name: "GetHuntContext", Method: "GET", Path: "/api/hunts/<hunt_id>/context"},
 	{Name: "CreateHunt", Method: "POST", Path: "/api/hunts", Result: "ApiHunt"},
 	// FIXME: Binary Stream
@@ -321,6 +336,7 @@ import (
 	"net/url"
 	"path"
 	"strconv"
+	"strings"
 )
 
 `)

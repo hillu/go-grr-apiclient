@@ -6,6 +6,7 @@ import (
 	"net/url"
 	"path"
 	"strconv"
+	"strings"
 )
 
 func (c *APIClient) ListArtifacts(rq ApiListArtifactsArgs) (rs *ApiListArtifactsResult, err error) {
@@ -476,6 +477,20 @@ func (c *APIClient) GetHuntStats(rq ApiGetHuntStatsArgs) (rs *ApiGetHuntStatsRes
 	rs = new(ApiGetHuntStatsResult)
 	values := make(url.Values)
 	if err := c.get("/api/hunts/"+path.Base(rq.GetHuntId())+"/stats", values, rs); err != nil {
+		return nil, err
+	}
+	return
+}
+func (c *APIClient) ListHuntClients(rq ApiListHuntClientsArgs) (rs *ApiListHuntClientsResult, err error) {
+	rs = new(ApiListHuntClientsResult)
+	values := make(url.Values)
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if err := c.get("/api/hunts/"+path.Base(rq.GetHuntId())+"/clients/"+strings.ToLower(path.Base(rq.GetClientStatus().String())), values, rs); err != nil {
 		return nil, err
 	}
 	return
