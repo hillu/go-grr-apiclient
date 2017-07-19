@@ -1,6 +1,10 @@
 package main
 
 import (
+	"github.com/golang/protobuf/proto"
+
+	. "github.com/hillu/go-grr-apiclient"
+
 	"fmt"
 	"log"
 	"os"
@@ -9,8 +13,8 @@ import (
 	"text/template"
 )
 
-// turn snake_case into CamelCase, ...
-func normalizeName(name string, capitalize bool) (result string) {
+// turn snake_case into CamelCase
+func snake2camel(name string, capitalize bool) (result string) {
 	for i, f := range strings.Split(name, "_") {
 		if i == 0 && !capitalize {
 			result = result + f
@@ -18,6 +22,12 @@ func normalizeName(name string, capitalize bool) (result string) {
 			result = result + strings.Title(f)
 		}
 	}
+	return
+}
+
+// avoid reserved words, ...
+func normalizeName(name string, capitalize bool) (result string) {
+	result = snake2camel(name, capitalize)
 	if result == "type" {
 		result = "typ"
 	}
@@ -27,17 +37,32 @@ func normalizeName(name string, capitalize bool) (result string) {
 var paramRegexp = regexp.MustCompile(`(/[a-z-/]+/?)((?:<.*?>)?)`)
 
 type param struct{ Prefix, Name string }
+type urlvalue struct{ Name, OrigName, Kind string }
 
-func getParams(path string) (params []param) {
+func getParams(path, typ string) (pathparams []param, urlvalues []urlvalue) {
+	inline := make(map[string]bool)
 	for _, f := range paramRegexp.FindAllStringSubmatch(path, -1) {
 		p := param{Prefix: f[1]}
 		if len(f[2]) != 0 {
-			// get rid of prefix:
+			// get rid of <...> brackets
 			name := f[2][1 : len(f[2])-1]
+			// strip foo: prefix
 			n := strings.Split(name, ":")
 			p.Name = n[len(n)-1]
+			inline[p.Name] = true
 		}
-		params = append(params, p)
+		pathparams = append(pathparams, p)
+	}
+	if typ != "" {
+		t := proto.MessageType(typ).Elem()
+		sp := proto.GetProperties(t)
+		for _, p := range sp.Prop {
+			if p.OrigName == "XXX_unrecognized" || inline[p.OrigName] {
+				continue
+			}
+			sf, _ := t.FieldByName(p.Name)
+			urlvalues = append(urlvalues, urlvalue{p.Name, p.OrigName, sf.Type.Elem().Kind().String()})
+		}
 	}
 	return
 }
@@ -45,28 +70,48 @@ func getParams(path string) (params []param) {
 var (
 	requesttemplate = template.Must(template.New("").
 			Funcs(template.FuncMap{"normalize": normalizeName}).
-			Parse(`
-{{- $arg := or .Arg ( print "Api" .Name "Args" ) -}}
-{{- $result := or .Result ( print "Api" .Name "Result" ) -}}
-func (c *APIClient) {{ .Name -}} (rq {{ $arg -}} ) (rs *{{ $result }}, err error) {
-	rs = new( {{- $result -}} )
-	if err := c.do("{{ .Method }}", {{ range $index, $var := .Params -}}
+			Parse(strings.TrimLeft(`
+func (c *APIClient) {{ .Name -}} (rq {{ .Arg -}} ) (rs *{{ .Result }}, err error) {
+	rs = new( {{- .Result -}} )
+{{- if eq .Method "POST" }}
+	if err := c.do("{{ .Method }}", {{ "" }}
+{{- else if eq .Method "GET" }}
+	values := make(url.Values)
+{{-   range .UrlValues }}
+	if rq. {{- .Name }} != nil {
+		values.Set("{{ .OrigName }}", 
+{{-     if eq .Kind "string" }} *rq. {{- .Name -}}
+{{-     else if or (eq .Kind "uint32") (eq .Kind "uint64") }} strconv.FormatUint(uint64(*rq. {{- .Name -}} ), 10)
+{{-     else if or (eq .Kind "int32") (eq .Kind "int64") }} strconv.FormatInt(int64(*rq. {{- .Name -}} ), 10)
+{{-     else if eq .Kind "bool" }} strconv.FormatBool(*rq. {{- .Name -}} )
+{{-     else }}
+	ERROR
+{{-     end -}} )
+	}
+{{-   end }}
+	if err := c.get(
+{{- end }}
+{{- range $index, $var := .Params -}}
 {{- if $index -}}+{{- end -}}
 "{{- $var.Prefix -}}"
 {{- with $var.Name }}+path.Base(rq.Get{{ normalize . true }}()){{ end -}}
 {{- end -}}
 
-, &rq, rs); err != nil {
+{{- if eq .Method "POST" -}}
+, &rq
+{{- else if eq .Method "GET" -}}
+, values
+{{- end -}}
+, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 `,
-		))
+			"\n")))
 	gettemplate = template.Must(template.New("").
 			Funcs(template.FuncMap{"normalize": normalizeName}).
-			Parse(`
-{{- $result := or .Result ( print "Api" .Name "Result" ) -}}
+			Parse(strings.TrimLeft(`
 func (c *APIClient) {{ .ApiCall.Name -}} (
 
 {{- range $index, $var := .Params -}}
@@ -74,8 +119,8 @@ func (c *APIClient) {{ .ApiCall.Name -}} (
 {{- with $var.Name }} {{- normalize . false }} string {{- end -}}
 {{- end -}}
 
-) (rs *{{ $result }}, err error) {
-	rs = new( {{- $result -}} )
+) (rs *{{ .Result }}, err error) {
+	rs = new( {{- .Result -}} )
 	if err := c.get(
 
 {{- range $index, $var := .Params -}}
@@ -90,12 +135,11 @@ func (c *APIClient) {{ .ApiCall.Name -}} (
 	return
 }
 `,
-		))
+			"\n")))
 	posttemplate = template.Must(template.New("").
 			Funcs(template.FuncMap{"normalize": normalizeName}).
-			Parse(`
-{{- $arg := or .Arg ( print "Api" .Name "Args" ) -}}
-func (c *APIClient) {{ .ApiCall.Name -}} (rq {{ $arg }}
+			Parse(strings.TrimLeft(`
+func (c *APIClient) {{ .ApiCall.Name -}} (rq {{ .Arg }}
 
 {{- range $index, $var := .Params -}}
 {{- with $var.Name }}, {{ normalize . false }} string {{- end -}}
@@ -113,7 +157,7 @@ func (c *APIClient) {{ .ApiCall.Name -}} (rq {{ $arg }}
 , &rq)
 }
 `,
-		))
+			"\n")))
 )
 
 type method int
@@ -274,29 +318,35 @@ func main() {
 package apiclient
 
 import (
+	"net/url"
 	"path"
+	"strconv"
 )
 
 `)
 	defer f.Close()
 	for _, call := range apicalls {
 		var err error
+		if call.Method != "GET-simple" && call.Arg == "" {
+			call.Arg = "Api" + call.Name + "Args"
+		}
+		if call.Method != "POST-simple" && call.Result == "" {
+			call.Result = "Api" + call.Name + "Result"
+		}
+		params, urlvalues := getParams(call.Path, call.Arg)
+		s := struct {
+			ApiCall
+			Params    []param
+			UrlValues []urlvalue
+		}{call, params, urlvalues}
+
 		switch call.Method {
 		case "GET", "POST":
-			err = requesttemplate.Execute(f, struct {
-				ApiCall
-				Params []param
-			}{call, getParams(call.Path)})
+			err = requesttemplate.Execute(f, s)
 		case "GET-simple":
-			err = gettemplate.Execute(f, struct {
-				ApiCall
-				Params []param
-			}{call, getParams(call.Path)})
+			err = gettemplate.Execute(f, s)
 		case "POST-simple":
-			err = posttemplate.Execute(f, struct {
-				ApiCall
-				Params []param
-			}{call, getParams(call.Path)})
+			err = posttemplate.Execute(f, s)
 		default:
 			log.Fatalf("Error in struct definition for %s", call.Name)
 		}

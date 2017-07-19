@@ -3,12 +3,21 @@
 package apiclient
 
 import (
+	"net/url"
 	"path"
+	"strconv"
 )
 
 func (c *APIClient) ListArtifacts(rq ApiListArtifactsArgs) (rs *ApiListArtifactsResult, err error) {
 	rs = new(ApiListArtifactsResult)
-	if err := c.do("GET", "/api/artifacts", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if err := c.get("/api/artifacts", values, rs); err != nil {
 		return nil, err
 	}
 	return
@@ -21,14 +30,28 @@ func (c *APIClient) DeleteArtifacts(rq ApiDeleteArtifactsArgs) error {
 }
 func (c *APIClient) SearchClients(rq ApiSearchClientsArgs) (rs *ApiSearchClientsResult, err error) {
 	rs = new(ApiSearchClientsResult)
-	if err := c.do("GET", "/api/clients", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Query != nil {
+		values.Set("query", *rq.Query)
+	}
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if err := c.get("/api/clients", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) GetClient(rq ApiGetClientArgs) (rs *ApiGetClientResult, err error) {
 	rs = new(ApiGetClientResult)
-	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId()), &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Timestamp != nil {
+		values.Set("timestamp", strconv.FormatUint(uint64(*rq.Timestamp), 10))
+	}
+	if err := c.get("/api/clients/"+path.Base(rq.GetClientId()), values, rs); err != nil {
 		return nil, err
 	}
 	return
@@ -56,35 +79,70 @@ func (c *APIClient) GetLastClientIPAddress(clientId string) (rs *ApiGetLastClien
 }
 func (c *APIClient) ListFiles(rq ApiListFilesArgs) (rs *ApiListFilesResult, err error) {
 	rs = new(ApiListFilesResult)
-	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/vfs-index/", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.FilePath != nil {
+		values.Set("file_path", *rq.FilePath)
+	}
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if rq.Filter != nil {
+		values.Set("filter", *rq.Filter)
+	}
+	if rq.DirectoriesOnly != nil {
+		values.Set("directories_only", strconv.FormatBool(*rq.DirectoriesOnly))
+	}
+	if err := c.get("/api/clients/"+path.Base(rq.GetClientId())+"/vfs-index/", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) GetFileDetails(rq ApiGetFileDetailsArgs) (rs *ApiGetFileDetailsResult, err error) {
 	rs = new(ApiGetFileDetailsResult)
-	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/vfs-details/"+path.Base(rq.GetFilePath()), &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Timestamp != nil {
+		values.Set("timestamp", strconv.FormatUint(uint64(*rq.Timestamp), 10))
+	}
+	if err := c.get("/api/clients/"+path.Base(rq.GetClientId())+"/vfs-details/"+path.Base(rq.GetFilePath()), values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) GetFileText(rq ApiGetFileTextArgs) (rs *ApiGetFileTextResult, err error) {
 	rs = new(ApiGetFileTextResult)
-	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/vfs-text/"+path.Base(rq.GetFilePath()), &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Length != nil {
+		values.Set("length", strconv.FormatInt(int64(*rq.Length), 10))
+	}
+	if rq.Encoding != nil {
+		values.Set("encoding", strconv.FormatInt(int64(*rq.Encoding), 10))
+	}
+	if rq.Timestamp != nil {
+		values.Set("timestamp", strconv.FormatUint(uint64(*rq.Timestamp), 10))
+	}
+	if err := c.get("/api/clients/"+path.Base(rq.GetClientId())+"/vfs-text/"+path.Base(rq.GetFilePath()), values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) GetFileVersionTimes(rq ApiGetFileVersionTimesArgs) (rs *ApiGetFileVersionTimesResult, err error) {
 	rs = new(ApiGetFileVersionTimesResult)
-	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/vfs-version-times/"+path.Base(rq.GetFilePath()), &rq, rs); err != nil {
+	values := make(url.Values)
+	if err := c.get("/api/clients/"+path.Base(rq.GetClientId())+"/vfs-version-times/"+path.Base(rq.GetFilePath()), values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) GetFileDownloadCommand(rq ApiGetFileDownloadCommandArgs) (rs *ApiGetFileDownloadCommandResult, err error) {
 	rs = new(ApiGetFileDownloadCommandResult)
-	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/vfs-download-command/"+path.Base(rq.GetFilePath()), &rq, rs); err != nil {
+	values := make(url.Values)
+	if err := c.get("/api/clients/"+path.Base(rq.GetClientId())+"/vfs-download-command/"+path.Base(rq.GetFilePath()), values, rs); err != nil {
 		return nil, err
 	}
 	return
@@ -98,7 +156,8 @@ func (c *APIClient) CreateVfsRefreshOperation(rq ApiCreateVfsRefreshOperationArg
 }
 func (c *APIClient) GetVfsTimeline(rq ApiGetVfsTimelineArgs) (rs *ApiGetVfsTimelineResult, err error) {
 	rs = new(ApiGetVfsTimelineResult)
-	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/vfs-timeline/"+path.Base(rq.GetFilePath()), &rq, rs); err != nil {
+	values := make(url.Values)
+	if err := c.get("/api/clients/"+path.Base(rq.GetClientId())+"/vfs-timeline/"+path.Base(rq.GetFilePath()), values, rs); err != nil {
 		return nil, err
 	}
 	return
@@ -125,14 +184,22 @@ func (c *APIClient) RemoveClientsLabels(rq ApiRemoveClientsLabelsArgs) error {
 }
 func (c *APIClient) ListFlows(rq ApiListFlowsArgs) (rs *ApiListFlowsResult, err error) {
 	rs = new(ApiListFlowsResult)
-	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/flows", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if err := c.get("/api/clients/"+path.Base(rq.GetClientId())+"/flows", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) GetFlow(rq ApiGetFlowArgs) (rs *ApiFlow, err error) {
 	rs = new(ApiFlow)
-	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId()), &rq, rs); err != nil {
+	values := make(url.Values)
+	if err := c.get("/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId()), values, rs); err != nil {
 		return nil, err
 	}
 	return
@@ -149,42 +216,78 @@ func (c *APIClient) CancelFlow(rq ApiCancelFlowArgs, clientId string, flowId str
 }
 func (c *APIClient) ListFlowResults(rq ApiListFlowResultsArgs) (rs *ApiListFlowResultsResult, err error) {
 	rs = new(ApiListFlowResultsResult)
-	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId())+"/results", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if rq.Filter != nil {
+		values.Set("filter", *rq.Filter)
+	}
+	if err := c.get("/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId())+"/results", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) GetFlowResultsExportCommand(rq ApiGetFlowResultsExportCommandArgs) (rs *ApiGetFlowResultsExportCommandResult, err error) {
 	rs = new(ApiGetFlowResultsExportCommandResult)
-	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId())+"/results/export-command", &rq, rs); err != nil {
+	values := make(url.Values)
+	if err := c.get("/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId())+"/results/export-command", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) ListFlowOutputPlugins(rq ApiListFlowOutputPluginsArgs) (rs *ApiListFlowOutputPluginsResult, err error) {
 	rs = new(ApiListFlowOutputPluginsResult)
-	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId())+"/output-plugins", &rq, rs); err != nil {
+	values := make(url.Values)
+	if err := c.get("/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId())+"/output-plugins", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) ListFlowOutputPluginLogs(rq ApiListFlowOutputPluginLogsArgs) (rs *ApiListFlowOutputPluginLogsResult, err error) {
 	rs = new(ApiListFlowOutputPluginLogsResult)
-	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId())+"/output-plugins/"+path.Base(rq.GetPluginId())+"/errors", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if err := c.get("/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId())+"/output-plugins/"+path.Base(rq.GetPluginId())+"/errors", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) ListFlowOutputPluginErrors(rq ApiListFlowOutputPluginErrorsArgs) (rs *ApiListFlowOutputPluginErrorsResult, err error) {
 	rs = new(ApiListFlowOutputPluginErrorsResult)
-	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId())+"/output-plugins/"+path.Base(rq.GetPluginId())+"/errors", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if err := c.get("/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId())+"/output-plugins/"+path.Base(rq.GetPluginId())+"/errors", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) ListFlowLogs(rq ApiListFlowLogsArgs) (rs *ApiListFlowLogsResult, err error) {
 	rs = new(ApiListFlowLogsResult)
-	if err := c.do("GET", "/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId())+"/log", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if rq.Filter != nil {
+		values.Set("filter", *rq.Filter)
+	}
+	if err := c.get("/api/clients/"+path.Base(rq.GetClientId())+"/flows/"+path.Base(rq.GetFlowId())+"/log", values, rs); err != nil {
 		return nil, err
 	}
 	return
@@ -198,7 +301,14 @@ func (c *APIClient) CreateGlobalFlow(rq ApiCreateFlowArgs) (rs *ApiFlow, err err
 }
 func (c *APIClient) ListCronJobs(rq ApiListCronJobsArgs) (rs *ApiListCronJobsResult, err error) {
 	rs = new(ApiListCronJobsResult)
-	if err := c.do("GET", "/api/cron-jobs", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if err := c.get("/api/cron-jobs", values, rs); err != nil {
 		return nil, err
 	}
 	return
@@ -211,7 +321,23 @@ func (c *APIClient) DeleteCronJob(rq ApiDeleteCronJobArgs, cronJobId string) err
 }
 func (c *APIClient) ListHunts(rq ApiListHuntsArgs) (rs *ApiListHuntsResult, err error) {
 	rs = new(ApiListHuntsResult)
-	if err := c.do("GET", "/api/hunts", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if rq.CreatedBy != nil {
+		values.Set("created_by", *rq.CreatedBy)
+	}
+	if rq.DescriptionContains != nil {
+		values.Set("description_contains", *rq.DescriptionContains)
+	}
+	if rq.ActiveWithin != nil {
+		values.Set("active_within", strconv.FormatUint(uint64(*rq.ActiveWithin), 10))
+	}
+	if err := c.get("/api/hunts", values, rs); err != nil {
 		return nil, err
 	}
 	return
@@ -225,77 +351,139 @@ func (c *APIClient) GetHunt(huntId string) (rs *ApiHunt, err error) {
 }
 func (c *APIClient) ListHuntErrors(rq ApiListHuntErrorsArgs) (rs *ApiListHuntErrorsResult, err error) {
 	rs = new(ApiListHuntErrorsResult)
-	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/errors", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if rq.Filter != nil {
+		values.Set("filter", *rq.Filter)
+	}
+	if err := c.get("/api/hunts/"+path.Base(rq.GetHuntId())+"/errors", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) ListHuntLogs(rq ApiListHuntLogsArgs) (rs *ApiListHuntLogsResult, err error) {
 	rs = new(ApiListHuntLogsResult)
-	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/log", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if rq.Filter != nil {
+		values.Set("filter", *rq.Filter)
+	}
+	if err := c.get("/api/hunts/"+path.Base(rq.GetHuntId())+"/log", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) ListHuntResults(rq ApiListHuntResultsArgs) (rs *ApiListHuntResultsResult, err error) {
 	rs = new(ApiListHuntResultsResult)
-	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/results", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if rq.Filter != nil {
+		values.Set("filter", *rq.Filter)
+	}
+	if err := c.get("/api/hunts/"+path.Base(rq.GetHuntId())+"/results", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) GetHuntResultsExportCommand(rq ApiGetHuntResultsExportCommandArgs) (rs *ApiGetHuntResultsExportCommandResult, err error) {
 	rs = new(ApiGetHuntResultsExportCommandResult)
-	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/results/export-command", &rq, rs); err != nil {
+	values := make(url.Values)
+	if err := c.get("/api/hunts/"+path.Base(rq.GetHuntId())+"/results/export-command", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) ListHuntOutputPlugins(rq ApiListHuntOutputPluginsArgs) (rs *ApiListHuntOutputPluginsResult, err error) {
 	rs = new(ApiListHuntOutputPluginsResult)
-	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/output-plugins", &rq, rs); err != nil {
+	values := make(url.Values)
+	if err := c.get("/api/hunts/"+path.Base(rq.GetHuntId())+"/output-plugins", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) ListHuntOutputPluginLogs(rq ApiListHuntOutputPluginLogsArgs) (rs *ApiListHuntOutputPluginLogsResult, err error) {
 	rs = new(ApiListHuntOutputPluginLogsResult)
-	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/output-plugins/"+path.Base(rq.GetPluginId())+"/logs", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if err := c.get("/api/hunts/"+path.Base(rq.GetHuntId())+"/output-plugins/"+path.Base(rq.GetPluginId())+"/logs", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) ListHuntOutputPluginErrors(rq ApiListHuntOutputPluginErrorsArgs) (rs *ApiListHuntOutputPluginErrorsResult, err error) {
 	rs = new(ApiListHuntOutputPluginErrorsResult)
-	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/output-plugins/"+path.Base(rq.GetPluginId())+"/errors", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if err := c.get("/api/hunts/"+path.Base(rq.GetHuntId())+"/output-plugins/"+path.Base(rq.GetPluginId())+"/errors", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) ListHuntCrashes(rq ApiListHuntCrashesArgs) (rs *ApiListHuntCrashesResult, err error) {
 	rs = new(ApiListHuntCrashesResult)
-	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/crashes", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if rq.Filter != nil {
+		values.Set("filter", *rq.Filter)
+	}
+	if err := c.get("/api/hunts/"+path.Base(rq.GetHuntId())+"/crashes", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) GetHuntClientCompletionStats(rq ApiGetHuntClientCompletionStatsArgs) (rs *ApiGetHuntClientCompletionStatsResult, err error) {
 	rs = new(ApiGetHuntClientCompletionStatsResult)
-	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/client-completion-stats", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Size != nil {
+		values.Set("size", strconv.FormatInt(int64(*rq.Size), 10))
+	}
+	if err := c.get("/api/hunts/"+path.Base(rq.GetHuntId())+"/client-completion-stats", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) GetHuntStats(rq ApiGetHuntStatsArgs) (rs *ApiGetHuntStatsResult, err error) {
 	rs = new(ApiGetHuntStatsResult)
-	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/stats", &rq, rs); err != nil {
+	values := make(url.Values)
+	if err := c.get("/api/hunts/"+path.Base(rq.GetHuntId())+"/stats", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) GetHuntContext(rq ApiGetHuntContextArgs) (rs *ApiGetHuntContextResult, err error) {
 	rs = new(ApiGetHuntContextResult)
-	if err := c.do("GET", "/api/hunts/"+path.Base(rq.GetHuntId())+"/context", &rq, rs); err != nil {
+	values := make(url.Values)
+	if err := c.get("/api/hunts/"+path.Base(rq.GetHuntId())+"/context", values, rs); err != nil {
 		return nil, err
 	}
 	return
@@ -316,28 +504,59 @@ func (c *APIClient) CreateUserClientApproval(rq ApiCreateUserClientApprovalArgs)
 }
 func (c *APIClient) GetUserClientApproval(rq ApiGetUserClientApprovalArgs) (rs *ApiUserClientApproval, err error) {
 	rs = new(ApiUserClientApproval)
-	if err := c.do("GET", "/api/users/me/approvals/client/"+path.Base(rq.GetClientId()), &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Reason != nil {
+		values.Set("reason", *rq.Reason)
+	}
+	if err := c.get("/api/users/me/approvals/client/"+path.Base(rq.GetClientId()), values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) ListUserClientApprovals(rq ApiListUserClientApprovalsArgs) (rs *ApiListUserClientApprovalsResult, err error) {
 	rs = new(ApiListUserClientApprovalsResult)
-	if err := c.do("GET", "/api/users/me/approvals/client", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if rq.ClientId != nil {
+		values.Set("client_id", *rq.ClientId)
+	}
+	if rq.State != nil {
+		values.Set("state", strconv.FormatInt(int64(*rq.State), 10))
+	}
+	if err := c.get("/api/users/me/approvals/client", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) ListUserHuntApprovals(rq ApiListUserHuntApprovalsArgs) (rs *ApiListUserHuntApprovalsResult, err error) {
 	rs = new(ApiListUserHuntApprovalsResult)
-	if err := c.do("GET", "/api/users/me/approvals/hunt", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if err := c.get("/api/users/me/approvals/hunt", values, rs); err != nil {
 		return nil, err
 	}
 	return
 }
 func (c *APIClient) ListUserCronApprovals(rq ApiListUserCronApprovalsArgs) (rs *ApiListUserCronApprovalsResult, err error) {
 	rs = new(ApiListUserCronApprovalsResult)
-	if err := c.do("GET", "/api/users/me/approvals/cron", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Offset != nil {
+		values.Set("offset", strconv.FormatInt(int64(*rq.Offset), 10))
+	}
+	if rq.Count != nil {
+		values.Set("count", strconv.FormatInt(int64(*rq.Count), 10))
+	}
+	if err := c.get("/api/users/me/approvals/cron", values, rs); err != nil {
 		return nil, err
 	}
 	return
@@ -351,7 +570,11 @@ func (c *APIClient) GetPendingUserNotificationsCount() (rs *ApiGetPendingUserNot
 }
 func (c *APIClient) ListPendingUserNotifications(rq ApiListPendingUserNotificationsArgs) (rs *ApiListPendingUserNotificationsResult, err error) {
 	rs = new(ApiListPendingUserNotificationsResult)
-	if err := c.do("GET", "/api/users/me/notifications/pending", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.Timestamp != nil {
+		values.Set("timestamp", strconv.FormatUint(uint64(*rq.Timestamp), 10))
+	}
+	if err := c.get("/api/users/me/notifications/pending", values, rs); err != nil {
 		return nil, err
 	}
 	return
@@ -389,7 +612,8 @@ func (c *APIClient) GetConfig() (rs *ApiGetConfigResult, err error) {
 }
 func (c *APIClient) GetConfigOption(rq ApiGetConfigOptionArgs) (rs *ApiConfigOption, err error) {
 	rs = new(ApiConfigOption)
-	if err := c.do("GET", "/api/config/"+path.Base(rq.GetName()), &rq, rs); err != nil {
+	values := make(url.Values)
+	if err := c.get("/api/config/"+path.Base(rq.GetName()), values, rs); err != nil {
 		return nil, err
 	}
 	return
@@ -403,7 +627,11 @@ func (c *APIClient) ListKbFields() (rs *ApiListKbFieldsResult, err error) {
 }
 func (c *APIClient) ListFlowDescriptors(rq ApiListFlowDescriptorsArgs) (rs *ApiListFlowDescriptorsResult, err error) {
 	rs = new(ApiListFlowDescriptorsResult)
-	if err := c.do("GET", "/api/flows/descriptors", &rq, rs); err != nil {
+	values := make(url.Values)
+	if rq.FlowType != nil {
+		values.Set("flow_type", strconv.FormatInt(int64(*rq.FlowType), 10))
+	}
+	if err := c.get("/api/flows/descriptors", values, rs); err != nil {
 		return nil, err
 	}
 	return
@@ -424,7 +652,8 @@ func (c *APIClient) StartRobotGetFilesOperation(rq ApiStartRobotGetFilesOperatio
 }
 func (c *APIClient) GetRobotGetFilesOperationState(rq ApiGetRobotGetFilesOperationStateArgs) (rs *ApiGetRobotGetFilesOperationStateResult, err error) {
 	rs = new(ApiGetRobotGetFilesOperationStateResult)
-	if err := c.do("GET", "/api/robot-actions/get-files/"+path.Base(rq.GetOperationId()), &rq, rs); err != nil {
+	values := make(url.Values)
+	if err := c.get("/api/robot-actions/get-files/"+path.Base(rq.GetOperationId()), values, rs); err != nil {
 		return nil, err
 	}
 	return
