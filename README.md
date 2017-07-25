@@ -39,7 +39,16 @@ are templates for three basic patterns, see `generate.go`,
 - simple POST: provide Protobuf Message, receive simple answer
 - GET/POST: provide Protobuf Message, receive Protobuf Message
 
-Remaining issues
+### Changes to `*.proto` files as distributed with GRR 3.1.0.2
+
+- `ApiHunt.ClientRate` has been changed from an int64 to a float32.
+  See [GRR issue #473](https://github.com/google/grr/issues/473).
+- Some `bytes` fields that can contain arbitrary data structures have
+  been changed to `AnyValue`: `FlowRequest.args`,
+  `GenericHuntArgs.flow_args`, `CreateCronJobFlowArgs.flow_args`. See
+  [GRR issue #530](https://github.com/google/grr/issues/530)
+
+### Remaining issues
 
 - A GET -> binary stream function template (for the routes annotated
   with `@BinaryStream`)
