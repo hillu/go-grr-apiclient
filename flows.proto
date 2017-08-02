@@ -948,7 +948,7 @@ message ClientActionArgs {
     }, default=false];
 
 
-  optional bytes action_args = 4 [(sem_type) = {
+  optional AnyValue action_args = 4 [(sem_type) = {
       dynamic_type: "GetActionArgsClass",
       description: "Client action arguments.",
     }];
@@ -973,7 +973,7 @@ message ConsoleDebugFlowArgs {
       description: "If True, print each response.",
     }];
 
-  optional bytes flow_args = 5 [(sem_type) = {
+  optional AnyValue flow_args = 5 [(sem_type) = {
       dynamic_type: "GetFlowArgsClass",
       description: "Flow arguments.",
     }];

@@ -44,9 +44,15 @@ are templates for three basic patterns, see `generate.go`,
 - `ApiHunt.ClientRate` has been changed from an int64 to a float32.
   See [GRR issue #473](https://github.com/google/grr/issues/473).
 - Some `bytes` fields that can contain arbitrary data structures have
-  been changed to `AnyValue`: `FlowRequest.args`,
-  `GenericHuntArgs.flow_args`, `CreateCronJobFlowArgs.flow_args`. See
-  [GRR issue #530](https://github.com/google/grr/issues/530)
+  been changed to `AnyValue`: 
+    - `AuditEvent.flow_args`
+    - `ClientActionArgs.action_args`
+    - `ConsoleDebugFlowArgs.flow_args`
+    - `CreateCronJobFlowArgs.flow_args`
+    - `FlowRequest.args`
+    - `GenericHuntArgs.flow_args`
+    - `OutputPluginDescriptor.plugin_args`
+  See [GRR issue #530](https://github.com/google/grr/issues/530).
 
 ### Remaining issues
 

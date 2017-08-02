@@ -1835,7 +1835,7 @@ message AuditEvent {
 
   optional Action action = 3 [default=UNKNOWN];
   optional string flow_name = 4;
-  optional bytes flow_args = 5;
+  optional AnyValue flow_args = 5;
 
   optional string client = 6 [(sem_type) = {
       type: "RDFURN",
