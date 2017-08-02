@@ -8,6 +8,7 @@ import (
 	"flag"
 	"log"
 	"net/http"
+	"net/http/cookiejar"
 	"net/url"
 	"os"
 	"strings"
@@ -24,10 +25,12 @@ func main() {
 	}
 	c := &apiclient.APIClient{
 		BaseURL: baseurl,
-		Client: &http.Client{Transport: &http.Transport{
-			TLSClientConfig: &tls.Config{InsecureSkipVerify: true}},
+		Client: &http.Client{
+			Transport: &http.Transport{
+				TLSClientConfig: &tls.Config{InsecureSkipVerify: true}},
 		},
 	}
+	c.Client.Jar, _ = cookiejar.New(nil)
 	result, err := c.SearchClients(apiclient.ApiSearchClientsArgs{})
 	if err != nil {
 		log.Fatal(err)
@@ -47,9 +50,9 @@ func main() {
 			client.GetUrn(),
 			client.GetOsInfo().GetNode(),
 			strings.Join(labels, " "),
-			time.Unix(int64(*client.FirstSeenAt)/1000000, 0).String(),
-			time.Unix(int64(*client.LastBootedAt)/1000000, 0).String(),
-			time.Unix(int64(*client.LastSeenAt)/1000000, 0).String(),
+			time.Unix(int64(client.GetFirstSeenAt())/1000000, 0).String(),
+			time.Unix(int64(client.GetLastBootedAt())/1000000, 0).String(),
+			time.Unix(int64(client.GetLastSeenAt())/1000000, 0).String(),
 			client.GetOsInfo().GetSystem(),
 			client.GetOsInfo().GetVersion(),
 			client.GetHardwareInfo().GetSystemManufacturer(),
