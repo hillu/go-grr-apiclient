@@ -115,15 +115,101 @@ func TestApiExamples(t *testing.T) {
 					},
 				},
 			}},
+		{
+			func() (proto.Message, error) {
+				return c.ListCronJobs(ApiListCronJobsArgs{})
+			},
+			&ApiListCronJobsResult{
+				Items: []*ApiCronJob{
+					&ApiCronJob{
+						AllowOverruns: proto.Bool(false),
+						Description:   proto.String("foo"),
+						FlowName:      proto.String("GRRVersionBreakDown"),
+						FlowRunnerArgs: &FlowRunnerArgs{
+							FlowName: proto.String("GRRVersionBreakDown"),
+						},
+						IsFailing:   proto.Bool(false),
+						Lifetime:    proto.Uint64(7200),
+						Periodicity: proto.Uint64(86400),
+						State:       ApiCronJob_DISABLED.Enum(),
+						Urn:         proto.String("aff4:/cron/GRRVersionBreakDown"),
+					},
+					&ApiCronJob{
+						AllowOverruns: proto.Bool(false),
+						Description:   proto.String(""),
+						FlowName:      proto.String("LastAccessStats"),
+						FlowRunnerArgs: &FlowRunnerArgs{
+							FlowName: proto.String("LastAccessStats"),
+						},
+						IsFailing:   proto.Bool(true),
+						LastRunTime: proto.Uint64(230000000),
+						Lifetime:    proto.Uint64(86400),
+						Periodicity: proto.Uint64(604800),
+						State:       ApiCronJob_ENABLED.Enum(),
+						Urn:         proto.String("aff4:/cron/LastAccessStats"),
+					},
+					&ApiCronJob{
+						AllowOverruns: proto.Bool(false),
+						Description:   proto.String("bar"),
+						FlowName:      proto.String("OSBreakDown"),
+						FlowRunnerArgs: &FlowRunnerArgs{
+							FlowName: proto.String("OSBreakDown"),
+						},
+						IsFailing:   proto.Bool(false),
+						Lifetime:    proto.Uint64(86400),
+						Periodicity: proto.Uint64(604800),
+						State:       ApiCronJob_ENABLED.Enum(),
+						Urn:         proto.String("aff4:/cron/OSBreakDown"),
+					},
+				},
+				TotalCount: proto.Int64(3),
+			},
+		},
+		{
+			func() (proto.Message, error) {
+				return c.CreateFlow(ApiCreateFlowArgs{
+					ClientId: proto.String("C.1000000000000000"),
+					Flow: &ApiFlow{
+						Name: proto.String("ListProcesses"),
+						Args: MustNewAnyValue(&ListProcessesArgs{
+							FetchBinaries: proto.Bool(true),
+							FilenameRegex: proto.String("."),
+						}),
+						RunnerArgs: &FlowRunnerArgs{
+							NotifyToUser:  proto.Bool(false),
+							OutputPlugins: []*OutputPluginDescriptor{},
+							Priority:      GrrMessage_HIGH_PRIORITY.Enum(),
+						},
+					},
+				},
+				)
+			},
+
+			&ApiFlow{
+				Args: MustNewAnyValue(&ListProcessesArgs{
+					FetchBinaries: proto.Bool(true),
+					FilenameRegex: proto.String("."),
+				}),
+				Creator:      proto.String("test"),
+				LastActiveAt: proto.Uint64(42000000),
+				Name:         proto.String("ListProcesses"),
+				StartedAt:    proto.Uint64(42000000),
+				State:        ApiFlow_RUNNING.Enum(),
+				Urn:          proto.String("aff4:/C.1000000000000000/flows/W:ABCDEF"),
+			},
+		},
 	} {
 		got, err := test.f()
 		if err != nil {
 			t.Errorf("test %d: %s", i, err)
 		}
 		if proto.MarshalTextString(got) != proto.MarshalTextString(test.expected) {
-			t.Errorf("Unexpected result\nGot:\n%s\nExpected:\n%s",
+			t.Errorf("test %d:\nUnexpected result\nGot:\n%s\nExpected:\n%s",
+				i,
 				proto.MarshalTextString(got),
 				proto.MarshalTextString(test.expected))
+		} else {
+			t.Logf("test %d:\nResult: %s", i, proto.MarshalTextString(got))
 		}
 	}
 }

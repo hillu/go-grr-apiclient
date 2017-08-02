@@ -91,7 +91,6 @@ func (c *APIClient) DoRequest(rq *http.Request) (*http.Response, error) {
 func (c *APIClient) do(method, apipath string, rqm, rsm proto.Message) error {
 	u := *c.BaseURL
 	u.Path = path.Join(u.Path, apipath)
-	u.RawQuery = "strip_type_info=1"
 	buf := &bytes.Buffer{}
 	if err := json.NewEncoder(buf).Encode(rqm); err != nil {
 		return err
@@ -104,7 +103,7 @@ func (c *APIClient) do(method, apipath string, rqm, rsm proto.Message) error {
 	if err != nil {
 		return err
 	}
-	if err := json.NewDecoder(rs.Body).Decode(rsm); err != nil {
+	if err := decodeGrrJSON(rs.Body, rsm); err != nil {
 		return err
 	}
 	return nil
@@ -117,7 +116,6 @@ func (c *APIClient) get(apipath string, values url.Values, rsm proto.Message) er
 	if values == nil {
 		values = make(url.Values)
 	}
-	values.Set("strip_type_info", "1")
 	u.RawQuery = values.Encode()
 	rq, err := http.NewRequest("GET", u.String(), nil)
 	if err != nil {
@@ -127,7 +125,7 @@ func (c *APIClient) get(apipath string, values url.Values, rsm proto.Message) er
 	if err != nil {
 		return err
 	}
-	if err := json.NewDecoder(rs.Body).Decode(rsm); err != nil {
+	if err := decodeGrrJSON(rs.Body, rsm); err != nil {
 		return err
 	}
 	return nil
