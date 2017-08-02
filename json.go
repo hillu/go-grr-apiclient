@@ -22,6 +22,8 @@ var anyValueType = reflect.TypeOf(new(AnyValue))
 // - elementary: uint/int/float of any size,bool, string
 //   (using json.Unmarshal)
 // - proto.Message
+// - AnyValue (generic value that stores a proto.Message with type
+//   information)
 // - pointers and slices of the above
 func unmarshalGrrJSON(buf []byte, v interface{}) error {
 	val := reflect.ValueOf(v)

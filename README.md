@@ -39,6 +39,11 @@ are templates for three basic patterns, see `generate.go`,
 - simple POST: provide Protobuf Message, receive simple answer
 - GET/POST: provide Protobuf Message, receive Protobuf Message
 
+A custom JSON unmarshaler that can deal with age/type/value records
+returned by the GRR API (if `strip_type_info=1` is not passed) has
+been implemented, so AnyValue messages can be deserialized correctly
+in most(?) circumstances.
+
 ### Changes to `*.proto` files as distributed with GRR 3.1.0.2
 
 - `ApiHunt.ClientRate` has been changed from an int64 to a float32.
@@ -59,8 +64,6 @@ are templates for three basic patterns, see `generate.go`,
 - A GET -> binary stream function template (for the routes annotated
   with `@BinaryStream`)
 - Some functions are not annotated with a result type at all
-- How can `AnyType` be mapped to something useful, do we need the type
-  information that is omitted by passing `strip_type_info=1`?
 - Adding most of the functions / API routes that have been added since
   GRR 3.1.0.2 should be possible.
 
