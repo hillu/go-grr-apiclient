@@ -10,18 +10,29 @@ import (
 
 // NewAnyValue creates and returns a new AnyValue in which the type
 // information and the serialized form of a proto.Message are stored.
-func NewAnyValue(pb proto.Message) (av *AnyValue, err error) {
-	var value []byte
+func NewAnyValue(pb proto.Message) (*AnyValue, error) {
+	var av AnyValue
 	typ := proto.MessageName(pb)
-	value, err = proto.Marshal(pb)
+	if pb == nil || typ == "" {
+		return &av, nil
+	}
+	av.TypeUrl = &typ
+	value, err := proto.Marshal(pb)
 	if err != nil {
-		return
+		return nil, err
 	}
-	av = &AnyValue{
-		TypeUrl: &typ,
-		Value:   value,
+	av.Value = value
+	return &av, nil
+}
+
+// MustNewAnyValue behaves like NewAnyValue but panics if an error
+// occurs.
+func MustNewAnyValue(pb proto.Message) *AnyValue {
+	av, err := NewAnyValue(pb)
+	if err != nil {
+		panic(err)
 	}
-	return
+	return av
 }
 
 // GetProtoMessage deserializes and returns the proto.Message stored
