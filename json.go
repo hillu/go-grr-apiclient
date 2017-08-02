@@ -88,6 +88,10 @@ func unmarshalGrrJSON(buf []byte, v interface{}) error {
 		val.Set(reflect.New(typ.Elem()))
 		return unmarshalGrrJSON(buf, val.Interface())
 	case reflect.Slice:
+		// special case for []byte
+		if typ.Elem().Kind() == reflect.Uint8 {
+			return json.Unmarshal(buf, v)
+		}
 		structSlice := []json.RawMessage{}
 		if err := json.Unmarshal(buf, &structSlice); err != nil {
 			return err
