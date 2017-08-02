@@ -3,6 +3,7 @@ package apiclient
 import (
 	"github.com/golang/protobuf/proto"
 
+	"encoding/base64"
 	"encoding/json"
 	"errors"
 	"io"
@@ -90,7 +91,19 @@ func unmarshalGrrJSON(buf []byte, v interface{}) error {
 	case reflect.Slice:
 		// special case for []byte
 		if typ.Elem().Kind() == reflect.Uint8 {
-			return json.Unmarshal(buf, v)
+			var s string
+			if err := json.Unmarshal(buf, &s); err != nil {
+				return errors.New("Error while decoding " + string(buf) +
+					" to string ([]byte): " + err.Error())
+			}
+			// Note: Base64-decoding should not be blindly attempted
+			// but based upon hard facts.
+			b, err := base64.StdEncoding.DecodeString(s)
+			if err != nil {
+				b = []byte(s)
+			}
+			val.Set(reflect.ValueOf(b))
+			return nil
 		}
 		structSlice := []json.RawMessage{}
 		if err := json.Unmarshal(buf, &structSlice); err != nil {
@@ -109,7 +122,11 @@ func unmarshalGrrJSON(buf []byte, v interface{}) error {
 		reflect.Float32, reflect.Float64,
 		reflect.String,
 		reflect.Bool:
-		return json.Unmarshal(buf, v)
+		if err := json.Unmarshal(buf, v); err != nil {
+			return errors.New("Error while decoding " + string(buf) + " to " +
+				typ.Kind().String() + " : " + err.Error())
+		}
+		return nil
 	default:
 		return errors.New("Will not unmarshal to a " + typ.Kind().String())
 	}
