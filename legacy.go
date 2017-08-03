@@ -42,6 +42,26 @@ func (c *APIClient) ForceRunCronLegacy(cronId string) (*http.Response, error) {
 	)
 }
 
+// EnableCronLegacy enables the cron hunt cronId to be run.
+//
+// This function uses a legacy (pre-API) interface.
+func (c *APIClient) EnableCronLegacy(cronId string) (*http.Response, error) {
+	return c.executeConfirmationDialogRenderer(
+		"EnableCronJobConfirmationDialog",
+		url.Values{"cron_urn": []string{cronId}},
+	)
+}
+
+// DisableCronLegacy disables the cron hunt cronId to be run.
+//
+// This function uses a legacy (pre-API) interface.
+func (c *APIClient) DisableCronLegacy(cronId string) (*http.Response, error) {
+	return c.executeConfirmationDialogRenderer(
+		"DisableCronJobConfirmationDialog",
+		url.Values{"cron_urn": []string{cronId}},
+	)
+}
+
 // RunHuntLegacy activates hunt huntId.
 //
 // This function uses a legacy (pre-API) interface.
