@@ -47,7 +47,8 @@ func (c *APIClient) client() *http.Client {
 func (c *APIClient) getCSRFToken() string {
 	if c.csrftoken == "" {
 		rq, _ := http.NewRequest("GET", c.BaseURL.String(), nil)
-		c.client().Do(rq)
+		rs, _ := c.client().Do(rq)
+		rs.Body.Close()
 		for _, cookie := range c.client().Jar.Cookies(c.BaseURL) {
 			if cookie.Name == "csrftoken" {
 				c.csrftoken = cookie.Value
@@ -103,6 +104,7 @@ func (c *APIClient) do(method, apipath string, rqm, rsm proto.Message) error {
 	if err != nil {
 		return err
 	}
+	defer rs.Body.Close()
 	if err := decodeGrrJSON(rs.Body, rsm); err != nil {
 		return err
 	}
@@ -125,6 +127,7 @@ func (c *APIClient) get(apipath string, values url.Values, rsm proto.Message) er
 	if err != nil {
 		return err
 	}
+	defer rs.Body.Close()
 	if err := decodeGrrJSON(rs.Body, rsm); err != nil {
 		return err
 	}
@@ -143,8 +146,10 @@ func (c *APIClient) post(apipath string, rqm proto.Message) error {
 	if err != nil {
 		return err
 	}
-	if _, err = c.DoRequest(rq); err != nil {
+	rs, err := c.DoRequest(rq)
+	if err != nil {
 		return err
 	}
+	rs.Body.Close()
 	return nil
 }
