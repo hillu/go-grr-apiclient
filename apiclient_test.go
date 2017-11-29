@@ -120,7 +120,7 @@ func TestApiExamples(t *testing.T) {
 			},
 			&ApiListCronJobsResult{
 				Items: []*ApiCronJob{
-					&ApiCronJob{
+					{
 						AllowOverruns: proto.Bool(false),
 						Description:   proto.String("foo"),
 						FlowName:      proto.String("GRRVersionBreakDown"),
@@ -133,7 +133,7 @@ func TestApiExamples(t *testing.T) {
 						State:       ApiCronJob_DISABLED.Enum(),
 						Urn:         proto.String("aff4:/cron/GRRVersionBreakDown"),
 					},
-					&ApiCronJob{
+					{
 						AllowOverruns: proto.Bool(false),
 						Description:   proto.String(""),
 						FlowName:      proto.String("LastAccessStats"),
@@ -147,7 +147,7 @@ func TestApiExamples(t *testing.T) {
 						State:       ApiCronJob_ENABLED.Enum(),
 						Urn:         proto.String("aff4:/cron/LastAccessStats"),
 					},
-					&ApiCronJob{
+					{
 						AllowOverruns: proto.Bool(false),
 						Description:   proto.String("bar"),
 						FlowName:      proto.String("OSBreakDown"),
