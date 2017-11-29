@@ -109,10 +109,7 @@ func (c *APIClient) do(method, apipath string, rqm, rsm proto.Message) error {
 		return err
 	}
 	defer rs.Body.Close()
-	if err := decodeGrrJSON(rs.Body, rsm); err != nil {
-		return err
-	}
-	return nil
+	return decodeGrrJSON(rs.Body, rsm)
 }
 
 // Simple GET calls where the response contains a JSON body
@@ -132,10 +129,7 @@ func (c *APIClient) get(apipath string, values url.Values, rsm proto.Message) er
 		return err
 	}
 	defer rs.Body.Close()
-	if err := decodeGrrJSON(rs.Body, rsm); err != nil {
-		return err
-	}
-	return nil
+	return decodeGrrJSON(rs.Body, rsm)
 }
 
 // Simple POST calls where only the request contains a meaningful JSON body

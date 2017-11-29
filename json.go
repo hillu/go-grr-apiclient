@@ -61,9 +61,8 @@ func unmarshalGrrJSON(buf []byte, v interface{}) error {
 			}
 			val.Set(reflect.ValueOf(av))
 			return nil
-		} else {
-			return unmarshalGrrJSON(atv.Value, v)
 		}
+		return unmarshalGrrJSON(atv.Value, v)
 	}
 
 	// Only deserialize struct types via proto.MessageType

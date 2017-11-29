@@ -47,11 +47,10 @@ func (h handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			h.t.Logf("URL: %s, Output: %s", s.URL, string(s.TypeStrippedResponse))
 			w.Write(s.TypeStrippedResponse)
 			return
-		} else {
-			h.t.Logf("URL: %s, Output: %s", s.URL, string(s.Response))
-			w.Write(s.Response)
-			return
 		}
+		h.t.Logf("URL: %s, Output: %s", s.URL, string(s.Response))
+		w.Write(s.Response)
+		return
 	}
 }
 
