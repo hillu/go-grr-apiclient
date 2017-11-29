@@ -14,6 +14,8 @@ import (
 	"strings"
 )
 
+// An APIError is an error type that encapsulates the HTTP status code
+// received from the GRR server.
 type APIError struct {
 	StatusCode int
 }
@@ -22,6 +24,8 @@ func (e APIError) Error() string {
 	return "web server error " + strconv.FormatInt(int64(e.StatusCode), 10)
 }
 
+// An APIClient is the client that is used to communicate with the GRR
+// server.
 type APIClient struct {
 	// Base URL of the GRR AdminUI server, including the username and
 	// password for HTTP Basic Authentication, e.g.
