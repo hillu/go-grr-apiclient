@@ -1,5 +1,8 @@
 # Golang API Client for GRR Rapid Response
 
+[![GoDoc](https://godoc.org/github.com/hillu/go-grr-apiclient?status.svg)](https://godoc.org/github.com/hillu/go-grr-apiclient)
+[![Go Report Card](https://goreportcard.com/badge/github.com/hillu/go-grr-apiclient)](https://goreportcard.com/report/github.com/hillu/go-grr-apiclient)
+
 ## What?
 
 This package contains Go bindings for the GRR Rapid Response API. It
